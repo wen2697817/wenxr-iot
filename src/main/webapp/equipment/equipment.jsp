@@ -35,7 +35,7 @@
 				<input type="button" class="btn btn-info"
 						style="width: 80px; margin-left: 10px;" id="button" value="查询" />
 				<button type="button" class="btn btn-info"
-				style="width: 100px; margin-left: 20px;" onclick="toSave();">增加用户</button>
+				style="width: 100px; margin-left: 20px;" onclick="toSave();">增加设备</button>
 			</div>
 				<table class="mt10 ml20">
 					<thead>

@@ -18,6 +18,15 @@
 	function equipment(){
 		parent.window.frames['contentFrame'].location.href = basePath+"equipment/equipment.jsp";
 	}
+	function run(){
+		parent.window.frames['contentFrame'].location.href = basePath+"run/run.jsp";
+	}
+	function history(){
+		parent.window.frames['contentFrame'].location.href = basePath+"history/history.jsp";
+	}
+	function monitor(){
+		parent.window.frames['contentFrame'].location.href = basePath+"monitor/monitor.jsp";
+	}
 	
 	</script>
 	<BODY >
@@ -25,13 +34,16 @@
 			<div class="left-menu">
 				<ul>
 					<li id="collect">
-						<h4><span></span><i class="iconfont" >&#xe7ba;</i><a href="javascript:void(0)" onclick="pmp();">监控</a></h4>
+						<h4><span></span><i class="iconfont" >&#xe7ba;</i><a href="javascript:void(0)" onclick="monitor();">监控</a></h4>
 					</li>
 					<li id="collect2">
-						<h4><span></span><i class="iconfont" >&#xe729;</i><a href="javascript:void(0)" onclick="report();">运行</a></h4>
+						<h4><span></span><i class="iconfont" >&#xe729;</i><a href="javascript:void(0)" onclick="run();">运行</a></h4>
 					</li>
 					<li id="collect3">
 						<h4><span></span><i class="iconfont" >&#xe61e;</i><a href="javascript:void(0)" onclick="equipment();">设备管理</a></h4>
+					</li>
+					<li id="collect4">
+						<h4><span></span><i class="iconfont" >&#xe685;</i><a href="javascript:void(0)" onclick="history();">历史信息</a></h4>
 					</li>
 					<s:if test='#session.loginInfoBean.role.roleId=="1"'>
 						<li>

@@ -19,7 +19,6 @@ public class TCPProcess implements Runnable{
 		Socket socket = null;
 		try {
 			// 建立服务器的Socket，并设定一个监听的端口PORT
-			
 			// 由于需要进行循环监听，因此获取消息的操作应放在一个while大循环中
 			while (true) {
 				try {

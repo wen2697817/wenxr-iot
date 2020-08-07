@@ -75,7 +75,7 @@ function loadOrderFormData(rePageBarFlag) {
 	if (!rePageBarFlag) {
 		$("#frmMain input[name='pageVo.start']").val("0");
 	}
-	$.post(basePath + "run-Run-loadAllRun.action", $(
+	$.post(basePath + "history-History-loadAllHistory.action", $(
 			"#frmMain").serialize(), function(data) {
 		if (data.code != "200") {
 			alert("登录超时，请重新登录！！");
@@ -111,7 +111,7 @@ function appendRequire(form) {
 	var userId = form[0];
 	var html = "<tr><td>" + (num++) + "</td><td>" + form[0] + "</td>" + "<td>"
 			+ form[1] + "</td><td>" + form[2] + "</td><td>" + form[3] + "</td><td>" 
-			+ form[4] + "</td><td>" + form[5] + "</td><td>" + form[6] + "</td></tr>";
+			+ form[4] + "</td></tr>";
 	$("#tbody0").append(html);
 
 	oTable = document.getElementById("tab");// 找表格

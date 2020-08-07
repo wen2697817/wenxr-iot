@@ -1,9 +1,9 @@
 package com.wenxr.iot.model;
 
 /**
- * 设备实体类
+ * 运行实体类
  * wenxr
- * 202086
+ * 202087
  */
 public class Run implements java.io.Serializable {
 

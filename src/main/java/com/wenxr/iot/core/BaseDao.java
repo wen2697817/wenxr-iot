@@ -265,14 +265,6 @@ public abstract class BaseDao extends HibernateDaoSupport {
 		}
 		// 组装where语句
 		String where = "";
-		for (int i = 0; page.getCondition() != null && i < page.getCondition().length; i++) {
-			if (Tools.isEmpty(page.getCondition()[i]) || Tools.isEmpty(page.getKeyWord()[i])) {
-				continue;
-			}
-			where += where.equals("") ? "" : (" " + page.getRelation()[i - 1] + " ");
-			where += page.getCondition()[i] + " like ";
-			where += "'%" + filterKeyWords(page.getKeyWord()[i]) + "%'";
-		}
 		int w = hql.lastIndexOf("where");
 		if (!Tools.isEmpty(where)) {
 			where = "(" + where + ")";

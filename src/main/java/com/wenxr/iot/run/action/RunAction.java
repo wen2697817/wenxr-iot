@@ -7,6 +7,7 @@ import com.wenxr.iot.core.PageValueObject;
 import com.wenxr.iot.model.User;
 import com.wenxr.iot.run.service.IRunService;
 import com.wenxr.iot.util.Globals;
+import com.wenxr.iot.util.Tools;
 
 public class RunAction extends BaseAction {
 	/**
@@ -39,8 +40,11 @@ public class RunAction extends BaseAction {
 		pageVo = new PageValueObject();
 		String userCode = request.getParameter("userCode");
 		String equipmentCode = request.getParameter("equipmentCode");
+		if(Tools.isEmpty(userCode)||Tools.isEmpty(equipmentCode)) {
+			return this.failure("程序异常！");
+		}
 		String pageNumber = request.getParameter("pageNumber");
-		int start = (Integer.valueOf(pageNumber)-1)*pageVo.getTotal();
+		int start = (Integer.valueOf(Tools.isEmpty(pageNumber)?"1":pageNumber)-1)*pageVo.getTotal();
 		pageVo.setStart(start);
 		this.data = new Object[] {runService.getAllRunByEquipmentCode(userCode,equipmentCode,pageVo), pageVo };
 		return this.success();

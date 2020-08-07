@@ -1,14 +1,14 @@
 
-/*--------------------------------------------------|
-| dTree 2.05 | www.destroydrop.com/javascript/tree/ |
-|---------------------------------------------------|
-| Copyright (c) 2002-2003 Geir Landr                |
-|                                                   |
-| This script can be used freely as long as all     |
-| copyright messages are intact.                    |
-|                                                   |
-| Updated: 17.04.2003                               |
-|--------------------------------------------------*/
+/*--------------------------------------------------|
+| dTree 2.05 | www.destroydrop.com/javascript/tree/ |
+|---------------------------------------------------|
+| Copyright (c) 2002-2003 Geir Landr                |
+|                                                   |
+| This script can be used freely as long as all     |
+| copyright messages are intact.                    |
+|                                                   |
+| Updated: 17.04.2003                               |
+|--------------------------------------------------*/
 var imgPath = "js/dtree/img";
 // Node object
 function Node(id, pid, name, url, title, target, icon, iconOpen, open) {
@@ -26,8 +26,8 @@ function Node(id, pid, name, url, title, target, icon, iconOpen, open) {
 	this._hc = false;
 	this._ai = 0;
 	this._p;
-}
-
+}
+
 // Tree object
 function dTree(objName) {
 	this.config = {target:null, folderLinks:true, useSelection:true, useCookies:false, useLines:true, useIcons:true, useStatusText:false, closeSameLevel:false, inOrder:false};
@@ -54,21 +54,21 @@ function dTree(objName) {
 	this.selectedNode = null;
 	this.selectedFound = false;
 	this.completed = false;
-}
-
+}
+
 // Adds a new node to the node array
 dTree.prototype.add = function (id, pid, name, url, title, target, icon, iconOpen, open) {
 	this.aNodes[this.aNodes.length] = new Node(id, pid, name, url, title, target, icon, iconOpen, open);
-};
-
+};
+
 // Open/close all nodes
 dTree.prototype.openAll = function () {
 	this.oAll(true);
 };
 dTree.prototype.closeAll = function () {
 	this.oAll(false);
-};
-
+};
+
 // Outputs the tree to the page
 dTree.prototype.toString = function () {
 	var str = "<div class=\"dtree\">\n";
@@ -86,8 +86,8 @@ dTree.prototype.toString = function () {
 	}
 	this.completed = true;
 	return str;
-};
-
+};
+
 // Creates the tree structure
 dTree.prototype.addNode = function (pNode) {
 	var str = "";
@@ -122,8 +122,8 @@ dTree.prototype.addNode = function (pNode) {
 		}
 	}
 	return str;
-};
-
+};
+
 // Creates the node icon, url and text
 dTree.prototype.node = function (node, nodeId) {
 	var str = "<div class=\"dTreeNode\">" + this.indent(node, nodeId);
@@ -172,8 +172,8 @@ dTree.prototype.node = function (node, nodeId) {
 	}
 	this.aIndent.pop();
 	return str;
-};
-
+};
+
 // Adds the empty and line icons
 dTree.prototype.indent = function (node, nodeId) {
 	var str = "";
@@ -195,8 +195,8 @@ dTree.prototype.indent = function (node, nodeId) {
 		}
 	}
 	return str;
-};
-
+};
+
 // Checks if a node has any children and if it is the last sibling
 dTree.prototype.setCS = function (node) {
 	var lastId;
@@ -211,14 +211,14 @@ dTree.prototype.setCS = function (node) {
 	if (lastId == node.id) {
 		node._ls = true;
 	}
-};
-
+};
+
 // Returns the selected node
 dTree.prototype.getSelected = function () {
 	var sn = this.getCookie("cs" + this.obj);
 	return (sn) ? sn : null;
-};
-
+};
+
 // Highlights the selected node
 dTree.prototype.s = function (id) {
 	if (!this.config.useSelection) {
@@ -240,8 +240,8 @@ dTree.prototype.s = function (id) {
 			this.setCookie("cs" + this.obj, cn.id);
 		}
 	}
-};
-
+};
+
 // Toggle Open or close
 dTree.prototype.o = function (id) {
 	var cn = this.aNodes[id];
@@ -253,8 +253,8 @@ dTree.prototype.o = function (id) {
 	if (this.config.useCookies) {
 		this.updateCookie();
 	}
-};
-
+};
+
 // Open or close all nodes
 dTree.prototype.oAll = function (status) {
 	for (var n = 0; n < this.aNodes.length; n++) {
@@ -266,8 +266,8 @@ dTree.prototype.oAll = function (status) {
 	if (this.config.useCookies) {
 		this.updateCookie();
 	}
-};
-
+};
+
 // Opens the tree to a specific node
 dTree.prototype.openTo = function (nId, bSelect, bFirst) {
 	if (!bFirst) {
@@ -295,8 +295,8 @@ dTree.prototype.openTo = function (nId, bSelect, bFirst) {
 		}
 	}
 	this.openTo(cn._p._ai, false, true);
-};
-
+};
+
 // Closes all nodes on the same level as certain node
 dTree.prototype.closeLevel = function (node) {
 	for (var n = 0; n < this.aNodes.length; n++) {
@@ -306,8 +306,8 @@ dTree.prototype.closeLevel = function (node) {
 			this.closeAllChildren(this.aNodes[n]);
 		}
 	}
-};
-
+};
+
 // Closes all children of a node
 dTree.prototype.closeAllChildren = function (node) {
 	for (var n = 0; n < this.aNodes.length; n++) {
@@ -319,8 +319,8 @@ dTree.prototype.closeAllChildren = function (node) {
 			this.closeAllChildren(this.aNodes[n]);
 		}
 	}
-};
-
+};
+
 // Change the status of a node(open or closed)
 dTree.prototype.nodeStatus = function (status, id, bottom) {
 	eDiv = document.getElementById("d" + this.obj + id);
@@ -332,22 +332,22 @@ dTree.prototype.nodeStatus = function (status, id, bottom) {
 	}
 	eJoin.src = (this.config.useLines) ? ((status) ? ((bottom) ? this.icon.minusBottom : this.icon.minus) : ((bottom) ? this.icon.plusBottom : this.icon.plus)) : ((status) ? this.icon.nlMinus : this.icon.nlPlus);
 	eDiv.style.display = (status) ? "block" : "none";
-};
-
-
+};
+
+
 // [Cookie] Clears a cookie
 dTree.prototype.clearCookie = function () {
 	var now = new Date();
 	var yesterday = new Date(now.getTime() - 1000 * 60 * 60 * 24);
 	this.setCookie("co" + this.obj, "cookieValue", yesterday);
 	this.setCookie("cs" + this.obj, "cookieValue", yesterday);
-};
-
+};
+
 // [Cookie] Sets value in a cookie
 dTree.prototype.setCookie = function (cookieName, cookieValue, expires, path, domain, secure) {
 	document.cookie = escape(cookieName) + "=" + escape(cookieValue) + (expires ? "; expires=" + expires.toGMTString() : "") + (path ? "; path=" + path : "") + (domain ? "; domain=" + domain : "") + (secure ? "; secure" : "");
-};
-
+};
+
 // [Cookie] Gets a value from a cookie
 dTree.prototype.getCookie = function (cookieName) {
 	var cookieValue = "";
@@ -362,8 +362,8 @@ dTree.prototype.getCookie = function (cookieName) {
 		}
 	}
 	return (cookieValue);
-};
-
+};
+
 // [Cookie] Returns ids of open nodes as a string
 dTree.prototype.updateCookie = function () {
 	var str = "";
@@ -376,8 +376,8 @@ dTree.prototype.updateCookie = function () {
 		}
 	}
 	this.setCookie("co" + this.obj, str);
-};
-
+};
+
 // [Cookie] Checks if a node id is in a cookie
 dTree.prototype.isOpen = function (id) {
 	var aOpen = this.getCookie("co" + this.obj).split(".");
@@ -387,8 +387,8 @@ dTree.prototype.isOpen = function (id) {
 		}
 	}
 	return false;
-};
-
+};
+
 // If Push and pop is not implemented by the browser
 if (!Array.prototype.push) {
 	Array.prototype.push = function array_push() {

@@ -11,6 +11,6 @@
 	<FRAMESET style="height:100%;" id="subMainFrameSet" border="0" frameSpacing="0" frameBorder="0" cols="200px,10px,*">
 			<FRAME id="funcTreeFrame" name="funcTreeFrame" src="left.jsp" frameBorder="0"></FRAME>
 			<FRAME id="pageline" name="pageline" src="frameline.jsp" scrolling="no" noresize="noresize"></FRAME>
-			<FRAME id="contentFrame" name="contentFrame" src="<%=basePath %>monitor/monitorList.jsp" frameBorder="0" scrolling="auto"></FRAME>
+			<FRAME id="contentFrame" name="contentFrame" src="<%=basePath %>monitor/monitor.jsp" frameBorder="0" scrolling="auto"></FRAME>
 	</FRAMESET>
 </html>

@@ -10,6 +10,6 @@ public class TcpServer implements ServletContextListener {
 		
 	}
 	public void contextInitialized(ServletContextEvent arg0) {
-		 new Thread(new TCPProcess(8088)).start();
+		 //new Thread(new TCPProcess(8088)).start();
 	}
 }

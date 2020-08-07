@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wenxr.iot.model.Monitor" table="monitor" >
+        <id name="monitorId" type="string">
+            <column name="monitor_id" length="50" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="userCode" type="string">
+            <column name="user_code" length="10" />
+        </property>
+        <property name="equipmentCode" type="string">
+            <column name="equipment_code" length="20" />
+        </property>
+        <property name="coverNumber" type="string">
+            <column name="cover_number" length="10" />
+        </property>
+        <property name="g1" type="string">
+            <column name="g1" length="30" />
+        </property>
+        <property name="g2" type="string">
+            <column name="g2" length="30" />
+        </property>
+        <property name="g3" type="string">
+            <column name="g3" length="30" />
+        </property>
+        <property name="g4" type="string">
+            <column name="g4" length="30" />
+        </property>
+        <property name="g5" type="string">
+            <column name="g5" length="30" />
+        </property>
+        <property name="g6" type="string">
+            <column name="g6" length="30" />
+        </property>
+        <property name="g7" type="string">
+            <column name="g7" length="30" />
+        </property>
+        <property name="g8" type="string">
+            <column name="g8" length="30" />
+        </property>
+        <property name="g9" type="string">
+            <column name="g9" length="30" />
+        </property>
+        <property name="g10" type="string">
+            <column name="g10" length="30" />
+        </property>
+        <property name="g11" type="string">
+            <column name="g11" length="30" />
+        </property>
+        <property name="g12" type="string">
+            <column name="g12" length="30" />
+        </property>
+        <property name="g13" type="string">
+            <column name="g13" length="30" />
+        </property>
+        <property name="g14" type="string">
+            <column name="g14" length="30" />
+        </property>
+        <property name="g15" type="string">
+            <column name="g15" length="30" />
+        </property>
+        <property name="g16" type="string">
+            <column name="g16" length="30" />
+        </property>
+        <property name="g17" type="string">
+            <column name="g17" length="30" />
+        </property>
+        <property name="g18" type="string">
+            <column name="g18" length="30" />
+        </property>
+        <property name="g19" type="string">
+            <column name="g19" length="30" />
+        </property>
+        <property name="g20" type="string">
+            <column name="g20" length="30" />
+        </property>
+        <property name="g21" type="string">
+            <column name="g21" length="30" />
+        </property>
+        <property name="g22" type="string">
+            <column name="g22" length="30" />
+        </property>
+        <property name="g23" type="string">
+            <column name="g23" length="30" />
+        </property>
+        <property name="g24" type="string">
+            <column name="g24" length="30" />
+        </property>
+        <property name="g25" type="string">
+            <column name="g25" length="30" />
+        </property>
+        <property name="g26" type="string">
+            <column name="g26" length="30" />
+        </property>
+        <property name="g27" type="string">
+            <column name="g27" length="30" />
+        </property>
+        <property name="g28" type="string">
+            <column name="g28" length="30" />
+        </property>
+        <property name="g29" type="string">
+            <column name="g29" length="30" />
+        </property>
+        <property name="g30" type="string">
+            <column name="g30" length="30" />
+        </property>
+        <property name="g31" type="string">
+            <column name="g31" length="30" />
+        </property>
+        <property name="g32" type="string">
+            <column name="g32" length="30" />
+        </property>
+    </class>
+</hibernate-mapping>

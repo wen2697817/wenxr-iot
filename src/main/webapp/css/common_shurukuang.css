@@ -1,0 +1,5 @@
+*{ margin:0; padding:0; list-style:none; text-decoration:none; font-family:"微软雅黑", "黑体", "宋体";}
+
+.srk{ width:397px; height:45px;}
+.srk label{ width:100px; height:45px; font-size:14px; color:#361140; line-height:45px; text-align:right; border-radius:0; padding:0;}
+.srk input{ width:280px; height:43px; border-radius:0;}

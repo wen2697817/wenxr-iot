@@ -1,0 +1,59 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.custom.i18n.resources" value="global" />
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.devMode " value="false" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"/>   
+	<!--限制在100M之内-->
+	<constant name="struts.multipart.maxSize" value="104857600" />
+
+	<package name="web" extends="json-default" namespace="/">
+		<global-results>
+			<result name="msg">/commons/msg.jsp</result>
+			<result name="GLOBAL_ERROR">/commons/error.jsp</result>
+			<result name="SESSION_TIME_OUT">/error/sessionTimeOut.jsp</result>
+			<result name="SYSTEM_LOGIN">/system/login/Login.jsp</result>
+			<result name="SYSTEM_MAIN">/system/layout/Main.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="GLOBAL_ERROR" exception="java.lang.Exception" />
+		</global-exception-mappings>
+
+		<action name="*-*-*" class="com.wenxr.iot.{1}.action.{2}Action" method="{3}">
+			<result name="METHOD">/pages/{1}/{2}-{3}.jsp</result>
+			<result name="DEFINED">/${definedReturnResult}</result>
+			<result name="DEFINED_REDIRECT" type="redirect">/${definedReturnResult}</result>
+			<!-- 统一返回结果 -->
+			<result name="STATUS_JSON" type="json">
+				<param name="includeProperties">success,code,msg,total,data.*</param>
+				<param name="ignoreHierarchy">false</param>
+			</result>
+			<result name="input" type="json">
+				<param name="includeProperties">success,code,msg,total,data.*</param>
+				<param name="ignoreHierarchy">false</param>
+			</result>
+		</action>
+		<action name="upload" class="com.wenxr.iot.common.action.FileUploadAction" method="upload">  
+			<interceptor-ref name="fileUpload">  
+				<param name="maximumSize">1024000</param>  
+			</interceptor-ref>  
+			<result name="success" type="httpheader">  
+				<param name="status">200</param>  
+			</result>  
+		</action> 
+		<action name="download" class="com.wenxr.iot.common.action.FileDownloadAction">
+			<result type="stream"> 
+				<param name="contentType">application/octet-stream;charset=UTF-8</param> 
+				<param name="inputName">fileInputStream</param> 
+				<param name="contentDisposition">attachment;filename="${fileName}"</param> 
+				<param name="bufferSize">1024</param> 
+			</result> 
+		</action>
+	</package>
+</struts>

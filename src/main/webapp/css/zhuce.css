@@ -1,0 +1,21 @@
+*{ margin:0; padding:0; list-style:none; text-decoration:none; font-family:"微软雅黑", "黑体", "宋体";}
+
+/*注册开始*/
+.zcym{ width:1002px; height:650px; background:#e0f3f5; margin:0 auto; margin-top:40px;}
+.zcym .zcl{ width:650px; height:560px; margin-top:45px; float:left; padding:0; border-right:1px solid #cccccc;}
+.zcym .zcl h2{ font-size:24px; color:#361140; font-weight:100; margin:0; padding-left:50px; padding-bottom:30px;}
+.zcym .zcl .tytk{ padding-top:60px; padding-left:136px; font-size:14px; color:#361140; margin-bottom:20px;}
+.zcym .zcl .lgbths{ margin-left:115px;}
+.zcym .zcr{ width:352px; height:380px; margin-top:45px; float:right; padding-left:55px;}
+.zcym .zcr h3{ font-size:14px; color:#361140; font-weight:100; margin:0; padding-top:22px; padding-bottom:20px;}
+.zcym .zcr .sjdxz{ margin-top:70px;}
+.zcym .zcr .sjdxz span{ padding:0 10px;}
+.zcym button{ margin-left:35px; width:125px; height:43px; border-radius:0; border:none;}
+.zcym button:hover{ background:#2bcef4; border:none;}
+.tytk{ margin-top:-40px;}
+.yzm{ width:235px; height:45px; float:left;}
+.yzm label{ width:100px; height:45px; font-size:14px; color:#361140; line-height:45px; text-align:right; border-radius:0; padding:0;}
+.yzm input{ width:125px; height:43px; border-radius:0;}
+.yzmbg{ height:45px; background:#1ebed9; text-align:center; line-height:45px; font-size:14px; color:#ffffff; margin-left:25px;}
+.sjdxz span{ font-size:14px; color:#361140; padding:0 10px;}
+/*注册结束*/

@@ -1,0 +1,21 @@
+*{ margin:0; padding:0; list-style:none; text-decoration:none; font-family:"微软雅黑", "黑体", "宋体";}
+
+/*lg黄色开始*/
+.lgbths{ height:45px; background:#31B0D5; text-align:center; line-height:45px; font-size:18px; color:#ffffff;}
+.lgbths:hover{ background:#ff7d26;}
+/*lg黄色结束*/
+
+/*lg蓝色开始*/
+.lgbtls{ height:45px; background:#06c5f2; text-align:center; line-height:45px; font-size:18px; color:#ffffff;}
+.lgbtls:hover{ background:#2bcef4;}
+/*lg蓝色结束*/
+
+/*md蓝色开始*/
+.mdbtls{ height:40px; background:#06c5f2; text-align:center; line-height:40px; font-size:18px; color:#ffffff;}
+.mdbtls：hover{ background:#2bcef4;}
+/*md蓝色结束*/
+
+/*附件开始*/
+.tjfj{ width:75px; height:25px; background:#dddddd; font-size:12px; color:#361140; text-align:center; line-height:25px; font-weight:100; margin:0;}
+.tjfj:hover{ background::#e2e2e2;}
+/*附件结束*/

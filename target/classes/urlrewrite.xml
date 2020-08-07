@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.2//EN"
+        "http://tuckey.org/res/dtds/urlrewrite3.2.dtd">
+
+<!--
+
+    Configuration file for UrlRewriteFilter
+    http://tuckey.org/urlrewrite/
+
+-->
+<urlrewrite>
+
+    <rule>
+        <note>
+            The rule means that requests to /test/status/ will be redirected to /rewrite-status
+            the url will be rewritten.
+        </note>
+        <from>/test/status/</from>
+        <to type="redirect">%{context-path}/rewrite-status</to>
+    </rule>
+
+
+    <outbound-rule>
+        <note>
+            The outbound-rule specifies that when response.encodeURL is called (if you are using JSTL c:url)
+            the url /rewrite-status will be rewritten to /test/status/.
+
+            The above rule and this outbound-rule means that end users should never see the
+            url /rewrite-status only /test/status/ both in thier location bar and in hyperlinks
+            in your pages.
+        </note>
+        <from>/rewrite-status</from>
+        <to>/test/status/</to>
+    </outbound-rule>
+
+
+    <!--
+
+    INSTALLATION
+
+        in your web.xml add...
+
+        <filter>
+            <filter-name>UrlRewriteFilter</filter-name>
+            <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+            <init-param>
+                <param-name>logLevel</param-name>
+                <param-value>WARN</param-value>
+            </init-param>
+        </filter>
+        <filter-mapping>
+            <filter-name>UrlRewriteFilter</filter-name>
+            <url-pattern>/*</url-pattern>
+        </filter-mapping>
+
+     EXAMPLES
+
+     Redirect one url
+        <rule>
+            <from>/some/old/page.html</from>
+            <to type="redirect">/very/new/page.html</to>
+        </rule>
+
+    Redirect a directory
+        <rule>
+            <from>/some/olddir/(.*)</from>
+            <to type="redirect">/very/newdir/$1</to>
+        </rule>
+
+    Clean a url
+        <rule>
+            <from>/products/([0-9]+)</from>
+            <to>/products/index.jsp?product_id=$1</to>
+        </rule>
+    eg, /products/1234 will be passed on to /products/index.jsp?product_id=1234 without the user noticing.
+
+    Browser iot
+        <rule>
+            <condition name="user-agent">Mozilla/[1-4]</condition>
+            <from>/some/page.html</from>
+            <to>/some/page-for-old-browsers.html</to>
+        </rule>
+    eg, will pass the request for /some/page.html on to /some/page-for-old-browsers.html only for older
+    browsers whose user agent srtings match Mozilla/1, Mozilla/2, Mozilla/3 or Mozilla/4.
+
+    Centralised browser iot
+        <rule>
+            <condition name="user-agent">Mozilla/[1-4]</condition>
+            <set type="request" name="browser">moz</set>
+        </rule>
+    eg, all requests will be checked against the condition and if matched
+    request.setAttribute("browser", "moz") will be called.
+
+    <rule>
+	    <from>^/company/([0-9]+).html$</from>
+	    <to>/goods/company.jsp?companyId=$1</to>
+	</rule>
+    -->
+    
+    <rule>
+	    <from>^/test/(.*)/(.*)$</from>
+	    <to>/test.jsp?id=$1&amp;name=$2</to>
+	</rule>
+    <rule>
+	    <from>^/download/(.*)/(.*)$</from>
+	    <to>/downloadPackageFileAction.action?path=$1&amp;fileName=$2</to>
+	</rule>
+	<rule>
+		<from>^/userregist$</from>
+		<to>/login-Register-regist.action</to>
+	</rule>
+	<!-- 用户查看页面 -->
+	<rule>
+		<from>^/view/user/(.*).html$</from>
+		<to>/common-View-viewUser.action?id=$1</to>
+	</rule>
+	<!-- 用户需求查看页面 -->
+	<rule>
+		<from>^/view/require/(.*).html$</from>
+		<to>/common-View-viewRequire.action?id=$1</to>
+	</rule>
+	<!-- 店铺查看页面 -->
+	<rule>
+		<from>^/view/store/(.*).html$</from>
+		<to>/common-View-viewStore.action?id=$1</to>
+	</rule>
+	<!-- 店铺查看页面 -->
+	<rule>
+		<from>^/view/product/(.*).html$</from>
+		<to>/common-View-viewProduct.action?productId=$1</to>
+	</rule>
+	<!-- 需求者订单查看页面 -->
+	<rule>
+		<from>^/view/userOrderForm/(.*).html$</from>
+		<to>/usercenter-UserOrderForm-loadUserOrderFormById.action?id=$1</to>
+	</rule>
+	<!-- 服务者订单查看页面 -->
+	<rule>
+		<from>^/view/serviceOrderForm/(.*).html$</from>
+		<to>/usercenter-ServiceOrderForm-loadServiceOrderFormById.action?id=$1</to>
+	</rule>
+	<!-- 通用-文件链接 -->
+	<rule>
+		<from>^/linkfile/(.*)/(.*)$</from>
+		<to>/upload/$1/$2</to>
+	</rule>
+	<!-- 找店铺 -->
+	<rule>
+		<from>^/search/store.html$</from>
+		<to>/store/storeList.jsp</to>
+	</rule>
+	<!-- 找服务 -->
+	<rule>
+		<from>^/search/service.html$</from>
+		<to>/service/serviceList.jsp</to>
+	</rule>
+	<!-- 找需求 -->
+	<rule>
+		<from>^/search/require.html$</from>
+		<to>/require/requireList.jsp</to>
+	</rule>
+	<!-- 
+	<outbound-rule>
+		<from>^/urlrewriteDemo/goods/company.jsp\?companyId=([0-9]+)$</from>
+		<to>/urlrewriteDemo/company/$1.html</to>
+	</outbound-rule>
+ 	-->
+</urlrewrite>
+

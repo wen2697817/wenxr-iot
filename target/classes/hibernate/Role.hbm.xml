@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-12 14:22:12 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.wenxr.iot.model.Role" table="role" >
+        <id name="roleId" type="string">
+            <column name="role_id" length="50" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="50">
+            </column>
+        </property>
+        <property name="memo" type="string">
+            <column name="memo" length="2000">
+            </column>
+        </property>
+        <set name="users" inverse="true" cascade="all">
+            <key>
+                <column name="role_id" length="50" />
+            </key>
+            <one-to-many class="com.wenxr.iot.model.User" />
+        </set>
+    </class>
+</hibernate-mapping>

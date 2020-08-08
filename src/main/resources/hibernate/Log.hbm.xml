@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wenxr.iot.model.Log" table="log" >
+        <id name="logId" type="string">
+            <column name="log_id" length="50" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="logType" type="string">
+            <column name="log_type" length="20" />
+        </property>
+        <property name="clientIp" type="string">
+            <column name="client_ip" length="20" />
+        </property>
+        <property name="logContent" type="string">
+            <column name="log_content" length="500" />
+        </property>
+        <property name="logTime" type="string">
+            <column name="log_time" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

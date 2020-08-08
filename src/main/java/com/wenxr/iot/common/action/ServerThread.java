@@ -5,6 +5,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
+import com.wenxr.iot.core.CommonDao;
+import com.wenxr.iot.model.Log;
+
 public class ServerThread extends Thread {
 	private Socket socket;
 	InputStream inputStream;
@@ -24,17 +27,16 @@ public class ServerThread extends Thread {
 				inputStream.read(bytes);
 				String string = new String(bytes);
 				string =string.trim();//去除首尾空格
-				String s = string.substring(0, 1);//判断是否已{开始
-				int e = string.lastIndexOf("}");
-				int l = string.length();//判断是否已}结束
-				if(s.equals("{")&&e==l-1) {
+//				String s = string.substring(0, 1);//判断是否已{开始
+//				int e = string.lastIndexOf("}");
+//				int l = string.length();//判断是否已}结束
+//				if(s.equals("{")&&e==l-1) {
 					String ipConfig = String.valueOf(socket.getInetAddress().getHostAddress());
-					String message = string.substring(1, string.length()-1);
-					message = message.replaceAll("%", ";");
-					Url url = new Url(message,ipConfig);
+					string = string.replaceAll("%", ";");
+					Url url = new Url(string,ipConfig);
 					url.setDaemon(true);
 					url.start();
-				}
+//				}
 				System.out.println(string);
 				// 向客户端发送消息
 				outputStream = socket.getOutputStream();

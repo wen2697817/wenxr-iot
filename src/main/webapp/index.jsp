@@ -71,7 +71,7 @@ function loginFunc() {
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>科耀后台管理系统</strong></h1>
+                            <h1><strong>察微后台管理系统</strong></h1>
                         </div>
                     </div>
                     <div class="row">

@@ -28,7 +28,7 @@
 	</script>
 	<body>
 	<div class="header">
-		<div class="logo fl">科耀后台管理系统</div>
+		<div class="logo fl">察微后台管理系统</div>
 		
 		<div class="top-nav fr">
 				<ul>

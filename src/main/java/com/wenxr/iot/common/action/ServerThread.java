@@ -23,6 +23,18 @@ public class ServerThread extends Thread {
 				byte[] bytes = new byte[1024];
 				inputStream.read(bytes);
 				String string = new String(bytes);
+				string =string.trim();//去除首尾空格
+				String s = string.substring(0, 1);//判断是否已{开始
+				int e = string.lastIndexOf("}");
+				int l = string.length();//判断是否已}结束
+				if(s.equals("{")&&e==l-1) {
+					String ipConfig = String.valueOf(socket.getInetAddress().getHostAddress());
+					String message = string.substring(1, string.length()-1);
+					message = message.replaceAll("%", ";");
+					Url url = new Url(message,ipConfig);
+					url.setDaemon(true);
+					url.start();
+				}
 				System.out.println(string);
 				// 向客户端发送消息
 				outputStream = socket.getOutputStream();
@@ -31,7 +43,6 @@ public class ServerThread extends Thread {
 			}
 		} catch (Exception e) {
 			System.out.println("客户端主动断开连接了");
-			// e.printStackTrace();
 		}
 		// 操作结束，关闭socket
 		try {

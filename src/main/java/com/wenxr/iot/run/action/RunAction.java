@@ -8,7 +8,11 @@ import com.wenxr.iot.model.User;
 import com.wenxr.iot.run.service.IRunService;
 import com.wenxr.iot.util.Globals;
 import com.wenxr.iot.util.Tools;
-
+/**
+ * 运行数据处理
+ * @author Administrator
+ *
+ */
 public class RunAction extends BaseAction {
 	/**
 	 * 

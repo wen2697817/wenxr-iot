@@ -7,7 +7,11 @@ import com.wenxr.iot.model.User;
 import com.wenxr.iot.monitor.service.IMonitorService;
 import com.wenxr.iot.util.Globals;
 import com.wenxr.iot.util.Tools;
-
+/**
+ * 监控数据处理
+ * @author Administrator
+ *
+ */
 public class MonitorAction extends BaseAction {
 	/**
 	 * 
@@ -42,5 +46,4 @@ public class MonitorAction extends BaseAction {
 		this.data = monitorService.getMonitor(userCode,equipmentCode);
 		return this.success();
 	}
-	
 }

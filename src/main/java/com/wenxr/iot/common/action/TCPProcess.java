@@ -29,6 +29,7 @@ public class TCPProcess implements Runnable{
 					e.printStackTrace();
 				}
 				ServerThread thread = new ServerThread(socket);
+				thread.setDaemon(true);
 				thread.start();
 			}
 		} catch (Exception e) {

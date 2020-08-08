@@ -5,16 +5,18 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.wenxr.iot.core.BaseService;
+import com.wenxr.iot.model.History;
 import com.wenxr.iot.model.Monitor;
+import com.wenxr.iot.model.Run;
 @Repository
 public class TcpServiceImpl extends BaseService implements ITcpService {
 
 	public void addOrUpdate(String message,String ipConfig) {
 		// TODO Auto-generated method stub
 		System.out.println(message+"   "+ipConfig);
-		if(message.length()>3) {
+		String m[] = message.split(",");
+		if(m.length>3) {
 			message = message.replaceAll(";", "%");
-			String m[] = message.split(",");
 			String flag = m[0];
 			String userCode = m[1];
 			String equipmentCode = m[2];
@@ -141,9 +143,41 @@ public class TcpServiceImpl extends BaseService implements ITcpService {
 					commonDao.addObject(monitor);
 				}
 			}else if(flag.equals("1")) {//运行记录
+				message = message.replaceAll(";", "%");
+				if(m.length==8) {
+					Run run = new Run();
+					run.setUserCode(userCode);
+					run.setEquipmentCode(equipmentCode);
+					run.setShelfId(m[3]);
+					run.setProgramName(m[4]);
+					run.setSiteLocation(m[5]);
+					run.setStepTime(m[6]);
+					run.setTotalTime(m[7]);
+					commonDao.addObject(run);
+				}
 				
 			}else if(flag.equals("2")) {//历史记录
-				
+				if(m.length==7) {
+					String productionDate = m[6];
+					String hql = "from History h where h.userCode=? and h.equipmentCode=? and h.productionDate=?";
+					List<History> historyList = commonDao.getObjects(hql, new Object[] {userCode,equipmentCode,productionDate});
+					History history;
+					if(historyList!=null&&historyList.size()==1) {//存在记录
+						history = historyList.get(0);
+					}else {//不存在新建
+						history = new History();
+						history.setUserCode(userCode);
+						history.setEquipmentCode(equipmentCode);
+						history.setProductionDate(productionDate);
+					}
+					history.setCoverNumber(m[4]);
+					history.setDyeNumber(m[5]);
+					if(historyList!=null&&historyList.size()==1) {//存在记录
+						commonDao.updateObject(history);
+					}else {//不存在新建
+						commonDao.addObject(history);
+					}
+				}
 			}
 		}
 		

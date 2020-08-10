@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>设备</title>
+<title>监控</title>
 <%@ include file="/commons/website.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/index.css" />
@@ -21,7 +21,7 @@
 	<div class="personnel">
 		<div class="content">
 			<div class="title-bj"></div>
-			<h2 class="mb50">运行数据</h2>
+			<h2 class="mb50">监控数据</h2>
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<form id="frmMain" name="frmMain" action="" method="post">
 				<input type="hidden" name="pageVo.start" value="0">

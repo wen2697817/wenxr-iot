@@ -112,5 +112,101 @@
         <property name="g32" type="string">
             <column name="g32" length="30" />
         </property>
+        <property name="gn1" type="string">
+            <column name="gn1" length="30" />
+        </property>
+        <property name="gn2" type="string">
+            <column name="gn2" length="30" />
+        </property>
+        <property name="gn3" type="string">
+            <column name="gn3" length="30" />
+        </property>
+        <property name="gn4" type="string">
+            <column name="gn4" length="30" />
+        </property>
+        <property name="gn5" type="string">
+            <column name="gn5" length="30" />
+        </property>
+        <property name="gn6" type="string">
+            <column name="gn6" length="30" />
+        </property>
+        <property name="gn7" type="string">
+            <column name="gn7" length="30" />
+        </property>
+        <property name="gn8" type="string">
+            <column name="gn8" length="30" />
+        </property>
+        <property name="gn9" type="string">
+            <column name="gn9" length="30" />
+        </property>
+        <property name="gn10" type="string">
+            <column name="gn10" length="30" />
+        </property>
+        <property name="gn11" type="string">
+            <column name="gn11" length="30" />
+        </property>
+        <property name="gn12" type="string">
+            <column name="gn12" length="30" />
+        </property>
+        <property name="gn13" type="string">
+            <column name="gn13" length="30" />
+        </property>
+        <property name="gn14" type="string">
+            <column name="gn14" length="30" />
+        </property>
+        <property name="gn15" type="string">
+            <column name="gn15" length="30" />
+        </property>
+        <property name="gn16" type="string">
+            <column name="gn16" length="30" />
+        </property>
+        <property name="gn17" type="string">
+            <column name="gn17" length="30" />
+        </property>
+        <property name="gn18" type="string">
+            <column name="gn18" length="30" />
+        </property>
+        <property name="gn19" type="string">
+            <column name="gn19" length="30" />
+        </property>
+        <property name="gn20" type="string">
+            <column name="gn20" length="30" />
+        </property>
+        <property name="gn21" type="string">
+            <column name="gn21" length="30" />
+        </property>
+        <property name="gn22" type="string">
+            <column name="gn22" length="30" />
+        </property>
+        <property name="gn23" type="string">
+            <column name="gn23" length="30" />
+        </property>
+        <property name="gn24" type="string">
+            <column name="gn24" length="30" />
+        </property>
+        <property name="gn25" type="string">
+            <column name="gn25" length="30" />
+        </property>
+        <property name="gn26" type="string">
+            <column name="gn26" length="30" />
+        </property>
+        <property name="gn27" type="string">
+            <column name="gn27" length="30" />
+        </property>
+        <property name="gn28" type="string">
+            <column name="gn28" length="30" />
+        </property>
+        <property name="gn29" type="string">
+            <column name="gn29" length="30" />
+        </property>
+        <property name="gn30" type="string">
+            <column name="gn30" length="30" />
+        </property>
+        <property name="gn31" type="string">
+            <column name="gn31" length="30" />
+        </property>
+        <property name="gn32" type="string">
+            <column name="gn32" length="30" />
+        </property>
     </class>
 </hibernate-mapping>

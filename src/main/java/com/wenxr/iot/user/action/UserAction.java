@@ -32,7 +32,7 @@ public class UserAction extends BaseAction {
 	 */
 	public String saveUser() {
 		if(StringUtils.isEmpty(user.getUserId())){
-			user.setPassword(MD5.getMD5("1"));
+			user.setPassword(MD5.getMD5("Chawei"));
 		}
 		userService.saveUser(user);
 		try {

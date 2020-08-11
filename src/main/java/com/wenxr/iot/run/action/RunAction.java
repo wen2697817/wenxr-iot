@@ -29,7 +29,13 @@ public class RunAction extends BaseAction {
 		if (user == null) {
 			return failure("登录超时，请重新登录！");
 		}
-		String userCode = request.getParameter("userCode");
+		String roleId = user.getRole().getRoleId();
+		String userCode;
+		if(roleId.equals("1")) {//管理员
+			userCode = request.getParameter("userCode");
+		}else {
+			userCode = user.getUserName();
+		}
 		String equipmentCode = request.getParameter("equipmentCode");
 		String shelfId = request.getParameter("shelfId");
 		String programName = request.getParameter("programName");

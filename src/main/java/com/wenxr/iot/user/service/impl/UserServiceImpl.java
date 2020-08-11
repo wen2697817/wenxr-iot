@@ -42,7 +42,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
 	}
 
 	public void updateResetPsw(String userId) {
-		String password = MD5.getMD5("1");
+		String password = MD5.getMD5("Chawei");
 		String sql = "update user set password=? where user_id=?";
 		commonDao.executeJDBCSql(sql, new Object[] { password, userId });
 	}

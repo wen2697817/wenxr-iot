@@ -28,7 +28,13 @@ public class MonitorAction extends BaseAction {
 		if (user == null) {
 			return failure("登录超时，请重新登录！");
 		}
-		String userCode = request.getParameter("userCode");
+		String roleId = user.getRole().getRoleId();
+		String userCode;
+		if(roleId.equals("1")) {//管理员
+			userCode = request.getParameter("userCode");
+		}else {
+			userCode = user.getUserName();
+		}
 		String equipmentCode = request.getParameter("equipmentCode");
 		this.data = new Object[] {monitorService.getAllMonitor(userCode,equipmentCode,pageVo), pageVo };
 		return this.success();
@@ -43,7 +49,7 @@ public class MonitorAction extends BaseAction {
 		if(Tools.isEmpty(userCode)||Tools.isEmpty(equipmentCode)) {
 			return this.failure("程序异常！");
 		}
-		this.data = monitorService.getMonitor(userCode,equipmentCode);
+		this.data=monitorService.getMonitor(userCode,equipmentCode);
 		return this.success();
 	}
 }

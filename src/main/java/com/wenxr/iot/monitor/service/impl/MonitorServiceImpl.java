@@ -1,13 +1,16 @@
 package com.wenxr.iot.monitor.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 import org.springframework.stereotype.Repository;
 
+import com.google.gson.JsonObject;
 import com.wenxr.iot.core.BaseService;
 import com.wenxr.iot.core.PageValueObject;
 import com.wenxr.iot.model.Monitor;
+import com.wenxr.iot.model.MonitorTcp;
 import com.wenxr.iot.monitor.service.IMonitorService;
 import com.wenxr.iot.util.Tools;
 
@@ -30,13 +33,36 @@ public class MonitorServiceImpl extends BaseService implements IMonitorService {
 		return commonDao.getObjectsByPage(hql, pageVo);
 	}
 
-	public Monitor getMonitor(String userCode, String equipmentCode) {
+	public List<MonitorTcp> getMonitor(String userCode, String equipmentCode) {
 		String hql = "from Monitor m where m.userCode=? and m.equipmentCode=?";
 		List<Monitor> monitorList = commonDao.getObjects(hql, new Object[] {userCode,equipmentCode});
 		if(monitorList==null||monitorList.size()==0) {
 			return null;
 		}
-		return monitorList.get(0);
+		Monitor m = monitorList.get(0);
+		List<MonitorTcp> mtList = new ArrayList<MonitorTcp>();
+		MonitorTcp mt = new MonitorTcp();
+		mt.setLocation("1");
+		mt.setStain(m.getG1());
+		mt.setProgramName(m.getGn1());
+		mtList.add(mt);
+		mt = new MonitorTcp();
+		mt.setLocation("2");
+		mt.setStain(m.getG2());
+		mt.setProgramName(m.getGn2());
+		mtList.add(mt);
+		mt = new MonitorTcp();
+		mt.setLocation("3");
+		mt.setStain(m.getG3());
+		mt.setProgramName(m.getGn3());
+		mtList.add(mt);
+		mt = new MonitorTcp();
+		mt.setLocation("4");
+		mt.setStain(m.getG4());
+		mt.setProgramName(m.getGn4());
+		mtList.add(mt);
+		
+		return mtList;
 	}
 
 }

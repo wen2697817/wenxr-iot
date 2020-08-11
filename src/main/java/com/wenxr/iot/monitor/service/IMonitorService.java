@@ -2,8 +2,10 @@ package com.wenxr.iot.monitor.service;
 
 import java.util.List;
 
+import com.google.gson.JsonObject;
 import com.wenxr.iot.core.PageValueObject;
 import com.wenxr.iot.model.Monitor;
+import com.wenxr.iot.model.MonitorTcp;
 public interface IMonitorService {
 	/**
 	 * 分页查询所有设备信息
@@ -17,6 +19,6 @@ public interface IMonitorService {
 	 * @param equipmentCode
 	 * @return
 	 */
-	Monitor getMonitor(String userCode, String equipmentCode);
+	List<MonitorTcp> getMonitor(String userCode, String equipmentCode);
 
 }

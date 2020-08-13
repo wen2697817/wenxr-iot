@@ -19,7 +19,7 @@ public interface IMonitorService {
 	 * @param equipmentCode
 	 * @return
 	 */
-	List<MonitorTcp> getMonitor(String userCode, String equipmentCode);
+	List<List<MonitorTcp>> getMonitor(String userCode, String equipmentCode);
 	/**
 	 * 获得封片数量
 	 * @param userCode

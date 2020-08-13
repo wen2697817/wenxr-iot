@@ -205,4 +205,14 @@ public class MonitorServiceImpl extends BaseService implements IMonitorService {
 		return mtList;
 	}
 
+	public String getCoverNumber(String userCode, String equipmentCode) {
+		String hql = "from Monitor m where m.userCode=? and m.equipmentCode=?";
+		List<Monitor> monitorList = commonDao.getObjects(hql, new Object[] {userCode,equipmentCode});
+		if(monitorList==null||monitorList.size()==0) {
+			return null;
+		}
+		Monitor m = monitorList.get(0);
+		return m.getCoverNumber();
+	}
+
 }

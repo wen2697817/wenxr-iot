@@ -20,5 +20,12 @@ public interface IMonitorService {
 	 * @return
 	 */
 	List<MonitorTcp> getMonitor(String userCode, String equipmentCode);
+	/**
+	 * 获得封片数量
+	 * @param userCode
+	 * @param equipmentCode
+	 * @return
+	 */
+	String getCoverNumber(String userCode, String equipmentCode);
 
 }

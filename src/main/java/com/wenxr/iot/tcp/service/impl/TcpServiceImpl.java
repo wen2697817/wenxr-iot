@@ -163,115 +163,120 @@ public class TcpServiceImpl extends BaseService implements ITcpService {
 						commonDao.addObject(monitor);
 					}
 				} else if (flag.equals("1")) {// 运行记录
-					if (m.length == 8) {
-						log.setLogType("运行");
-						String hql = "from Run r where r.userCode=? and r.equipmentCode=? and r.siteLocation=?";
-						List<Run> runList = commonDao.getObjects(hql, new Object[] { userCode, equipmentCode,m[5] });
-						Run run ;
-						String hql1 = "from Monitor m where m.userCode=? and m.equipmentCode=?";
-						List<Monitor> monitorList = commonDao.getObjects(hql1, new Object[] { userCode, equipmentCode });
-						Monitor monitor;
-						if (runList != null && runList.size() == 1) {// 存在记录
-							run = runList.get(0);
-						} else {// 不存在新建
-							run = new Run();
-							run.setUserCode(userCode);
-							run.setEquipmentCode(equipmentCode);
-							run.setSiteLocation(m[5]);
+					String mm[] = message.split("\\}\\{");
+					for(String ml:mm) {
+						String ms[] = ml.split(",");
+						if (ms.length == 9) {
+							log.setLogType("运行");
+							String hql = "from Run r where r.userCode=? and r.equipmentCode=? and r.siteLocation=?";
+							List<Run> runList = commonDao.getObjects(hql, new Object[] { userCode, equipmentCode,ms[5] });
+							Run run ;
+							String hql1 = "from Monitor m where m.userCode=? and m.equipmentCode=?";
+							List<Monitor> monitorList = commonDao.getObjects(hql1, new Object[] { userCode, equipmentCode });
+							Monitor monitor;
+							if (runList != null && runList.size() == 1) {// 存在记录
+								run = runList.get(0);
+							} else {// 不存在新建
+								run = new Run();
+								run.setUserCode(userCode);
+								run.setEquipmentCode(equipmentCode);
+								run.setSiteLocation(ms[5]);
+							}
+							if (monitorList != null && monitorList.size() == 1) {// 存在记录
+								monitor = monitorList.get(0);
+							} else {// 不存在新建
+								monitor = new Monitor();
+								monitor.setUserCode(userCode);
+								monitor.setEquipmentCode(equipmentCode);
+							}
+							run.setShelfId(ms[3]);
+							run.setProgramName(ms[4]);
+							run.setStepTime(ms[6]);
+							run.setTotalTime(ms[7]);
+							if(ms[5].equals("01"))
+								monitor.setGn1(ms[5]);
+							if(ms[5].equals("02"))
+								monitor.setGn2(ms[5]);
+							if(ms[5].equals("03"))
+								monitor.setGn3(ms[5]);
+							if(ms[5].equals("04"))
+								monitor.setGn4(ms[5]);
+							if(ms[5].equals("05"))
+								monitor.setGn5(ms[5]);
+							if(ms[5].equals("06"))
+								monitor.setGn6(ms[5]);
+							if(ms[5].equals("07"))
+								monitor.setGn7(ms[5]);
+							if(ms[5].equals("08"))
+								monitor.setGn8(ms[5]);
+							if(ms[5].equals("09"))
+								monitor.setGn9(ms[5]);
+							if(ms[5].equals("10"))
+								monitor.setGn10(ms[5]);
+							if(ms[5].equals("11"))
+								monitor.setGn11(ms[5]);
+							if(ms[5].equals("12"))
+								monitor.setGn12(ms[5]);
+							if(ms[5].equals("13"))
+								monitor.setGn13(ms[5]);
+							if(ms[5].equals("14"))
+								monitor.setGn14(ms[5]);
+							if(ms[5].equals("15"))
+								monitor.setGn15(ms[5]);
+							if(ms[5].equals("16"))
+								monitor.setGn16(ms[5]);
+							if(ms[5].equals("17"))
+								monitor.setGn17(ms[5]);
+							if(ms[5].equals("18"))
+								monitor.setGn18(ms[5]);
+							if(ms[5].equals("19"))
+								monitor.setGn19(ms[5]);
+							if(ms[5].equals("20"))
+								monitor.setGn20(ms[5]);
+							if(ms[5].equals("21"))
+								monitor.setGn21(ms[5]);
+							if(ms[5].equals("22"))
+								monitor.setGn22(ms[5]);
+							if(ms[5].equals("23"))
+								monitor.setGn23(ms[5]);
+							if(ms[5].equals("24"))
+								monitor.setGn24(ms[5]);
+							if(ms[5].equals("25"))
+								monitor.setGn25(ms[5]);
+							if(ms[5].equals("26"))
+								monitor.setGn26(ms[5]);
+							if(ms[5].equals("27"))
+								monitor.setGn27(ms[5]);
+							if(ms[5].equals("28"))
+								monitor.setGn28(ms[5]);
+							if(ms[5].equals("29"))
+								monitor.setGn29(ms[5]);
+							if(ms[5].equals("30"))
+								monitor.setGn30(ms[5]);
+							if(ms[5].equals("31"))
+								monitor.setGn31(ms[5]);
+							if(ms[5].equals("32"))
+								monitor.setGn32(ms[5]);
+							if (runList != null && runList.size() == 1) {// 存在记录
+								commonDao.updateObject(run);
+							} else {// 不存在新建
+								commonDao.addObject(run);
+							}
+							if (monitorList != null && monitorList.size() == 1) {// 存在记录
+								commonDao.updateObject(monitor);
+							} else {// 不存在新建
+								commonDao.addObject(monitor);
+							}
+						} else {
+							log.setLogType("异常");
 						}
-						if (monitorList != null && monitorList.size() == 1) {// 存在记录
-							monitor = monitorList.get(0);
-						} else {// 不存在新建
-							monitor = new Monitor();
-							monitor.setUserCode(userCode);
-							monitor.setEquipmentCode(equipmentCode);
-						}
-						run.setShelfId(m[3]);
-						run.setProgramName(m[4]);
-						run.setStepTime(m[6]);
-						run.setTotalTime(m[7]);
-						if(m[5].equals("1"))
-							monitor.setGn1(m[5]);
-						if(m[5].equals("2"))
-							monitor.setGn2(m[5]);
-						if(m[5].equals("3"))
-							monitor.setGn3(m[5]);
-						if(m[5].equals("4"))
-							monitor.setGn4(m[5]);
-						if(m[5].equals("5"))
-							monitor.setGn5(m[5]);
-						if(m[5].equals("6"))
-							monitor.setGn6(m[5]);
-						if(m[5].equals("7"))
-							monitor.setGn7(m[5]);
-						if(m[5].equals("8"))
-							monitor.setGn8(m[5]);
-						if(m[5].equals("9"))
-							monitor.setGn9(m[5]);
-						if(m[5].equals("10"))
-							monitor.setGn10(m[5]);
-						if(m[5].equals("11"))
-							monitor.setGn11(m[5]);
-						if(m[5].equals("12"))
-							monitor.setGn12(m[5]);
-						if(m[5].equals("13"))
-							monitor.setGn13(m[5]);
-						if(m[5].equals("14"))
-							monitor.setGn14(m[5]);
-						if(m[5].equals("15"))
-							monitor.setGn15(m[5]);
-						if(m[5].equals("16"))
-							monitor.setGn16(m[5]);
-						if(m[5].equals("17"))
-							monitor.setGn17(m[5]);
-						if(m[5].equals("18"))
-							monitor.setGn18(m[5]);
-						if(m[5].equals("19"))
-							monitor.setGn19(m[5]);
-						if(m[5].equals("20"))
-							monitor.setGn20(m[5]);
-						if(m[5].equals("21"))
-							monitor.setGn21(m[5]);
-						if(m[5].equals("22"))
-							monitor.setGn22(m[5]);
-						if(m[5].equals("23"))
-							monitor.setGn23(m[5]);
-						if(m[5].equals("24"))
-							monitor.setGn24(m[5]);
-						if(m[5].equals("25"))
-							monitor.setGn25(m[5]);
-						if(m[5].equals("26"))
-							monitor.setGn26(m[5]);
-						if(m[5].equals("27"))
-							monitor.setGn27(m[5]);
-						if(m[5].equals("28"))
-							monitor.setGn28(m[5]);
-						if(m[5].equals("29"))
-							monitor.setGn29(m[5]);
-						if(m[5].equals("30"))
-							monitor.setGn30(m[5]);
-						if(m[5].equals("31"))
-							monitor.setGn31(m[5]);
-						if(m[5].equals("32"))
-							monitor.setGn32(m[5]);
-						if (runList != null && runList.size() == 1) {// 存在记录
-							commonDao.updateObject(run);
-						} else {// 不存在新建
-							commonDao.addObject(run);
-						}
-						if (monitorList != null && monitorList.size() == 1) {// 存在记录
-							commonDao.updateObject(monitor);
-						} else {// 不存在新建
-							commonDao.addObject(monitor);
-						}
-					} else {
-						log.setLogType("异常");
 					}
+					
 
 				} else if (flag.equals("2")) {// 历史记录
-					if (m.length == 7) {
+					if (m.length == 6) {
 						log.setLogType("历史");
-						String productionDate = m[6];
+						String productionDate = m[5];
 						String hql = "from History h where h.userCode=? and h.equipmentCode=? and h.productionDate=?";
 						List<History> historyList = commonDao.getObjects(hql,
 								new Object[] { userCode, equipmentCode, productionDate });

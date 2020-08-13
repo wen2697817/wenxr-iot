@@ -50,6 +50,7 @@ public class MonitorAction extends BaseAction {
 			return this.failure("程序异常！");
 		}
 		this.data=monitorService.getMonitor(userCode,equipmentCode);
+		this.coverNumber = monitorService.getCoverNumber(userCode,equipmentCode);
 		return this.success();
 	}
 }

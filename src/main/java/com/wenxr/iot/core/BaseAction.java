@@ -39,7 +39,7 @@ public class BaseAction extends ActionSupport implements ServletRequestAware, Se
 	protected HttpServletResponse response;
 	protected Map<String, Object> session;
 	protected PageValueObject pageVo = null;
-	protected String success = "true", msg = null;
+	protected String success = "true", msg = null,coverNumber=null;
 	protected String basePath = ServletActionContext.getServletContext().getRealPath(File.separator);
 	/**
 	 * for ios status
@@ -92,6 +92,14 @@ public class BaseAction extends ActionSupport implements ServletRequestAware, Se
 	 */
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	public String getCoverNumber() {
+		return coverNumber;
+	}
+
+	public void setCoverNumber(String coverNumber) {
+		this.coverNumber = coverNumber;
 	}
 
 	/*

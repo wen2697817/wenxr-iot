@@ -31,11 +31,11 @@
 			<result name="DEFINED_REDIRECT" type="redirect">/${definedReturnResult}</result>
 			<!-- 统一返回结果 -->
 			<result name="STATUS_JSON" type="json">
-				<param name="includeProperties">success,code,msg,total,data.*</param>
+				<param name="includeProperties">success,code,msg,total,coverNumber,data.*</param>
 				<param name="ignoreHierarchy">false</param>
 			</result>
 			<result name="input" type="json">
-				<param name="includeProperties">success,code,msg,total,data.*</param>
+				<param name="includeProperties">success,code,msg,total,coverNumber,data.*</param>
 				<param name="ignoreHierarchy">false</param>
 			</result>
 		</action>

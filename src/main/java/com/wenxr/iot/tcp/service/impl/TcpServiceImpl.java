@@ -33,9 +33,9 @@ public class TcpServiceImpl extends BaseService implements ITcpService {
 		int l = message.length();// 判断是否已}结束
 		if (sls.equals("{") && e == l - 1) {
 			message = message.substring(1, l-1);
+			message = message.replaceAll(";", "%");
 			String m[] = message.split(",");
 			if (m.length > 3) {
-				message = message.replaceAll(";", "%");
 				String flag = m[0];
 				String userCode = m[1];
 				String equipmentCode = m[2];

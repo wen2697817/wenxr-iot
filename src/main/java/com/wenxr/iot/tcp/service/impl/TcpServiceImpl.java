@@ -194,69 +194,69 @@ public class TcpServiceImpl extends BaseService implements ITcpService {
 							run.setStepTime(ms[6]);
 							run.setTotalTime(ms[7]);
 							if(ms[5].equals("01"))
-								monitor.setGn1(ms[5]);
+								monitor.setGn1(ms[4]);
 							if(ms[5].equals("02"))
-								monitor.setGn2(ms[5]);
+								monitor.setGn2(ms[4]);
 							if(ms[5].equals("03"))
-								monitor.setGn3(ms[5]);
+								monitor.setGn3(ms[4]);
 							if(ms[5].equals("04"))
-								monitor.setGn4(ms[5]);
+								monitor.setGn4(ms[4]);
 							if(ms[5].equals("05"))
-								monitor.setGn5(ms[5]);
+								monitor.setGn5(ms[4]);
 							if(ms[5].equals("06"))
-								monitor.setGn6(ms[5]);
+								monitor.setGn6(ms[4]);
 							if(ms[5].equals("07"))
-								monitor.setGn7(ms[5]);
+								monitor.setGn7(ms[4]);
 							if(ms[5].equals("08"))
-								monitor.setGn8(ms[5]);
+								monitor.setGn8(ms[4]);
 							if(ms[5].equals("09"))
-								monitor.setGn9(ms[5]);
+								monitor.setGn9(ms[4]);
 							if(ms[5].equals("10"))
-								monitor.setGn10(ms[5]);
+								monitor.setGn10(ms[4]);
 							if(ms[5].equals("11"))
-								monitor.setGn11(ms[5]);
+								monitor.setGn11(ms[4]);
 							if(ms[5].equals("12"))
-								monitor.setGn12(ms[5]);
+								monitor.setGn12(ms[4]);
 							if(ms[5].equals("13"))
-								monitor.setGn13(ms[5]);
+								monitor.setGn13(ms[4]);
 							if(ms[5].equals("14"))
-								monitor.setGn14(ms[5]);
+								monitor.setGn14(ms[4]);
 							if(ms[5].equals("15"))
-								monitor.setGn15(ms[5]);
+								monitor.setGn15(ms[4]);
 							if(ms[5].equals("16"))
-								monitor.setGn16(ms[5]);
+								monitor.setGn16(ms[4]);
 							if(ms[5].equals("17"))
-								monitor.setGn17(ms[5]);
+								monitor.setGn17(ms[4]);
 							if(ms[5].equals("18"))
-								monitor.setGn18(ms[5]);
+								monitor.setGn18(ms[4]);
 							if(ms[5].equals("19"))
-								monitor.setGn19(ms[5]);
+								monitor.setGn19(ms[4]);
 							if(ms[5].equals("20"))
-								monitor.setGn20(ms[5]);
+								monitor.setGn20(ms[4]);
 							if(ms[5].equals("21"))
-								monitor.setGn21(ms[5]);
+								monitor.setGn21(ms[4]);
 							if(ms[5].equals("22"))
-								monitor.setGn22(ms[5]);
+								monitor.setGn22(ms[4]);
 							if(ms[5].equals("23"))
-								monitor.setGn23(ms[5]);
+								monitor.setGn23(ms[4]);
 							if(ms[5].equals("24"))
-								monitor.setGn24(ms[5]);
+								monitor.setGn24(ms[4]);
 							if(ms[5].equals("25"))
-								monitor.setGn25(ms[5]);
+								monitor.setGn25(ms[4]);
 							if(ms[5].equals("26"))
-								monitor.setGn26(ms[5]);
+								monitor.setGn26(ms[4]);
 							if(ms[5].equals("27"))
-								monitor.setGn27(ms[5]);
+								monitor.setGn27(ms[4]);
 							if(ms[5].equals("28"))
-								monitor.setGn28(ms[5]);
+								monitor.setGn28(ms[4]);
 							if(ms[5].equals("29"))
-								monitor.setGn29(ms[5]);
+								monitor.setGn29(ms[4]);
 							if(ms[5].equals("30"))
-								monitor.setGn30(ms[5]);
+								monitor.setGn30(ms[4]);
 							if(ms[5].equals("31"))
-								monitor.setGn31(ms[5]);
+								monitor.setGn31(ms[4]);
 							if(ms[5].equals("32"))
-								monitor.setGn32(ms[5]);
+								monitor.setGn32(ms[4]);
 							if (runList != null && runList.size() == 1) {// 存在记录
 								commonDao.updateObject(run);
 							} else {// 不存在新建

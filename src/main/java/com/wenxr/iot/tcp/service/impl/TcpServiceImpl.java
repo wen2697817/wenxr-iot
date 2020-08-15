@@ -289,8 +289,8 @@ public class TcpServiceImpl extends BaseService implements ITcpService {
 							history.setEquipmentCode(equipmentCode);
 							history.setProductionDate(productionDate);
 						}
-						history.setCoverNumber(m[4]);
-						history.setDyeNumber(m[5]);
+						history.setCoverNumber(m[3]);
+						history.setDyeNumber(m[4]);
 						if (historyList != null && historyList.size() == 1) {// 存在记录
 							commonDao.updateObject(history);
 						} else {// 不存在新建

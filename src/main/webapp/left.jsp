@@ -39,6 +39,12 @@
 					<li id="collect2">
 						<h4><span></span><i class="iconfont" >&#xe729;</i><a href="javascript:void(0)" onclick="run();">运行</a></h4>
 					</li>
+					<li id="collect4">
+						<h4>
+							<span></span><i class="iconfont">&#xe685;</i><a
+								href="javascript:void(0)" onclick="history();">历史信息</a>
+						</h4>
+					</li>
 					<s:if test='#session.loginInfoBean.role.roleId=="1"'>
 					<li id="collect3">
 						<h4>
@@ -46,13 +52,6 @@
 								href="javascript:void(0)" onclick="equipment();">设备管理</a>
 						</h4>
 					</li>
-					<li id="collect4">
-						<h4>
-							<span></span><i class="iconfont">&#xe685;</i><a
-								href="javascript:void(0)" onclick="history();">历史信息</a>
-						</h4>
-					</li>
-
 					<li>
 							<h4><span></span><i class="iconfont" >&#xe604;</i><a href="javascript:void(0)" onclick="user();">用户管理</a></h4>
 						</li>

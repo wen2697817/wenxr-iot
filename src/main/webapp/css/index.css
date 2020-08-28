@@ -81,6 +81,15 @@
 	float: left;
 }
 
+.u1 {
+	width: 150px;
+	height: 30px;
+	line-height: 45px;
+	text-align: center;
+	margin-bottom: 15px;
+	float: left;
+}
+
 .upassword {
 	width: 100px;
 	height: 30px;

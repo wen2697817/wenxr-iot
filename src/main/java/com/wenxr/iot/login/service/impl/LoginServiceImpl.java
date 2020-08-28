@@ -12,7 +12,7 @@ import com.wenxr.iot.model.User;
 public class LoginServiceImpl extends BaseService implements ILoginService {
 
 	public List<User> getUserByUserName(String userName) {
-		String hql="from User where userName=?";
+		String hql="from User where name=?";
 		return commonDao.getObjects(hql, new Object[]{userName});
 	}
 }

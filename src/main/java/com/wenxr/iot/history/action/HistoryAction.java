@@ -27,6 +27,9 @@ public class HistoryAction extends BaseAction {
 		}
 		String userCode = request.getParameter("userCode");
 		String equipmentCode = request.getParameter("equipmentCode");
+		if(!user.getRole().getRoleId().equals("1")) {//非管理员
+			userCode = user.getUserName();
+		}
 		this.data = new Object[] {historyService.getAllHistory(userCode,equipmentCode,pageVo), pageVo };
 		return this.success();
 	}

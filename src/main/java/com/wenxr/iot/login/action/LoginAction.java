@@ -41,7 +41,6 @@ public class LoginAction extends BaseAction {
 			return failure("用户名不存在");
 		} else {
 			User user = list.get(0);
-			
 			try {
 				if (!MD5.isMached(password, user.getPassword())) {
 					return failure("用户名或密码错误");

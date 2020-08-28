@@ -54,7 +54,7 @@ public class LoginAction extends BaseAction {
 			}
 		}
 		User user = list.get(0);
-		this.data=user.getUserId();
+		this.data=new Object[] {user.getUserId(),user.getUserName()};
 		return success();
 	}
 	/**

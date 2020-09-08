@@ -20,7 +20,7 @@ public class HistoryServiceImpl extends BaseService implements IHistoryService {
 		if (!Tools.isEmpty(equipmentCode)) {
 			hql = hql + " and h.equipmentCode like '%" + equipmentCode + "%'";
 		}
-		hql = hql + " order by h.userCode asc,h.equipmentCode asc";
+		hql = hql + " order by h.productionDate desc";
 		return commonDao.getObjectsByPage(hql, pageVo);
 	}
 

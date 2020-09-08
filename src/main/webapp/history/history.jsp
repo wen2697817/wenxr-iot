@@ -25,7 +25,7 @@
 			<input type="hidden" name="pageVo.start" value="0">
 			<div class="form-inline">
 				<label>客户编号：</label> <input
-						class="form-control" type="text"
+						class="form-control" type="hidden"
 						style="border-radius: 0px; width: 100px;" name="userCode"
 						id="userCode">
 				<label>设备编号：</label> <input
@@ -34,6 +34,8 @@
 						id="equipmentCode">
 				<input type="button" class="btn btn-info"
 						style="width: 80px; margin-left: 10px;" id="button" value="查询" />
+				<input type="button" class="btn btn-info"
+						style="width: 80px; margin-left: 10px;" id="download" value="导出" />
 			</div>
 				<table class="mt10 ml20">
 					<thead>

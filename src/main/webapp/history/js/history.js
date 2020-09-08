@@ -104,7 +104,16 @@ function loadOrderFormData(rePageBarFlag) {
 		}
 		$('#loading').hide();
 	});
-
+	/**
+	 * 保存报表到本地
+	 */
+	$.post(basePath
+			+ "history-History-exportExcel.action",
+			$("#frmMain").serialize(), function(data3) {
+		$("#download").attr("href",
+				basePath + "download.action?pathName=img/temporary/" + data3.data[0]+"&fileName=历史信息.xlsx");
+		delImg(data3.data[0]);// 启用删除表格
+	});
 }
 // 拼接html
 function appendRequire(form) {

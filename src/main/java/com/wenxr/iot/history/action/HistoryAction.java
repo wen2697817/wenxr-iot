@@ -50,5 +50,12 @@ public class HistoryAction extends BaseAction {
 		this.data = new Object[] {historyService.getAllHistoryByCode(userCode,equipmentCode,pageVo), pageVo };
 		return this.success();
 	}
-	
+	/**
+	 * 生成表格
+	 * @return
+	 */
+	public String exportExcel() {
+		String equipmentCode = request.getParameter("equipmentCode");
+		return this.success();
+	}
 }

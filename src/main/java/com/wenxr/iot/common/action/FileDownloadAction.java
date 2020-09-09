@@ -32,8 +32,8 @@ public class FileDownloadAction extends BaseAction
 	public String getFileName() {
 		return fileName;
 	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setFileName(String fileName) throws UnsupportedEncodingException {
+		this.fileName = new String(fileName.getBytes("ISO8859-1"), "utf-8");
 	}
 	public String getPathName() {
 		return pathName;

@@ -10,6 +10,12 @@
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/reset.css" />
 <script type="text/javascript" src="<%=basePath%>js/index.js"></script>
 <script type="text/javascript" src="<%=basePath%>history/js/history.js"></script>
+<link rel="stylesheet"
+	href="<%=basePath%>js/bootstrap-3.3.4-dist/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" />
+<script
+	src="<%=basePath%>js/bootstrap-3.3.4-dist/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"></script>
+<script
+	src="<%=basePath%>js/bootstrap-3.3.4-dist/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 <script type="text/javascript">
 	var userName = "<s:property value="#session.loginInfoBean.userName"/>";
 </script>
@@ -25,17 +31,43 @@
 			<input type="hidden" name="pageVo.start" value="0">
 			<div class="form-inline">
 				<label>客户编号：</label> <input
-						class="form-control" type="hidden"
+						class="form-control" type="text"
 						style="border-radius: 0px; width: 100px;" name="userCode"
 						id="userCode">
 				<label>设备编号：</label> <input
 						class="form-control" type="text"
 						style="border-radius: 0px; width: 100px;" name="equipmentCode"
 						id="equipmentCode">
+				<label>时间：</label> 
+				<span class="input-group date form_date"
+						style="width: 182px;"> <input class="form-control"
+						type="text" style="border-radius: 0px;" name="createTimeStart"
+						id="createTimeStart" value="<s:property value="#session.date"/>"
+						placeholder="起始日期" readonly> <span
+						class="input-group-addon"><span
+							class="glyphicon glyphicon-remove"></span></span> <span
+						class="input-group-addon" style="border-radius: 0px;"><span
+							class="glyphicon glyphicon-calendar"></span></span>
+					</span>至<span class="input-group date form_date" style="width: 182px;">
+						<input class="form-control" type="text"
+						style="border-radius: 0px;" name="createTimeEnd"
+						id="createTimeEnd" value="<s:property value="#session.date"/>"
+						placeholder="截止日期" readonly> <span
+						class="input-group-addon"><span
+							class="glyphicon glyphicon-remove"></span></span> <span
+						class="input-group-addon" style="border-radius: 0px;"><span
+							class="glyphicon glyphicon-calendar"></span></span>
+					</span>
 				<input type="button" class="btn btn-info"
 						style="width: 80px; margin-left: 10px;" id="button" value="查询" />
-				<input type="button" class="btn btn-info"
-						style="width: 80px; margin-left: 10px;" id="download" value="导出" />
+				<a id="download" href="">导出报表</a>
+				<br><br>
+				<label>总封片数：</label> <input
+						class="form-control" type="text"
+						style="border-radius: 0px; width: 100px;" id="fengpian" readonly="readonly">
+				<label>总染色数：</label> <input
+				class="form-control" type="text"
+				style="border-radius: 0px; width: 100px;" id="ranse"  readonly="readonly">
 			</div>
 				<table class="mt10 ml20">
 					<thead>

@@ -32,12 +32,12 @@
 						class="form-control" type="text"
 						style="border-radius: 0px; width: 100px;" name="equipmentCode"
 						id="equipmentCode">
-				<label>架子id：</label> <input
-				class="form-control" type="text"
+			 <input
+				class="form-control" type="hidden"
 				style="border-radius: 0px; width: 200px;" name="shelfId"
 				id="shelfId">
-				<label>程序名称：</label> <input
-				class="form-control" type="text"
+			<input
+				class="form-control" type="hidden"
 				style="border-radius: 0px; width: 200px;" name="programName"
 				id="programName">
 				<input type="button" class="btn btn-info"

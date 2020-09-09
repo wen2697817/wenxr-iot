@@ -4,11 +4,21 @@ $(function() {
 	$("#button").click(function() {
 		loadOrderFormData();
 	});
+	$('.form_date').datetimepicker({
+		format : 'yy/mm/dd',// 时间显示格式
+		language : "zh-CN",
+		weekStart : 1,
+		todayBtn : 1,
+		autoclose : 1,
+		todayHighlight : 1,
+		startView : 2,
+		minView : 2,
+		forceParse : 0
+	});
 	$("#frmMain input[name='formType']").val(null);
 	$("#frmMain input[name='formStatus']").val(null);
 	$("#frmMain input[name='pageVo.start']").val("0");
 	pageBarHtml = $("#pageBar").html();
-
 	$(document).on("click", "#pageBar li:not(:first):not(:last) a", function() {
 		var page = $(this).text();
 		var start = (parseInt(page, 10) - 1) * pager.limit;
@@ -102,6 +112,9 @@ function loadOrderFormData(rePageBarFlag) {
 			pager = data.data[1];
 			rePageBar(pager);
 		}
+		total =  data.data[2][0];
+		$("#fengpian").val(total[0]);
+		$("#ranse").val(total[1]);
 		$('#loading').hide();
 	});
 	/**
@@ -110,10 +123,24 @@ function loadOrderFormData(rePageBarFlag) {
 	$.post(basePath
 			+ "history-History-exportExcel.action",
 			$("#frmMain").serialize(), function(data3) {
-		$("#download").attr("href",
-				basePath + "download.action?pathName=img/temporary/" + data3.data[0]+"&fileName=历史信息.xlsx");
-		delImg(data3.data[0]);// 启用删除表格
-	});
+				$("#download").attr("href",
+						basePath + "download.action?pathName=img/temporary/" + data3.data[0]+"&fileName=池片缺陷统计.xlsx");
+				delImg(data3.data[0]);// 启用删除表格
+		});
+}
+/**
+ * 删除临时file
+ * @param imgPath
+ */
+function delImg(excelPath) {
+	if (excelPath) {
+		$('#myModal').on('hide.bs.modal', function() {//关闭后删除临时file
+			$.post(basePath + "history-History-delTemporary.action", {
+				imgPath : "img\\temporary\\" + excelPath
+			}, function(data) {
+			});
+		});
+	}
 }
 // 拼接html
 function appendRequire(form) {

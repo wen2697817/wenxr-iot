@@ -168,8 +168,8 @@ public class TcpServiceImpl extends BaseService implements ITcpService {
 						String ms[] = ml.split(",");
 						if (ms.length == 9) {
 							log.setLogType("运行");
-							String hql = "from Run r where r.userCode=? and r.equipmentCode=? and r.siteLocation=?";
-							List<Run> runList = commonDao.getObjects(hql, new Object[] { userCode, equipmentCode,ms[5] });
+							String hql = "from Run r where r.userCode=? and r.equipmentCode=? and r.shelfId=?";
+							List<Run> runList = commonDao.getObjects(hql, new Object[] { userCode, equipmentCode,ms[3] });
 							Run run ;
 							String hql1 = "from Monitor m where m.userCode=? and m.equipmentCode=?";
 							List<Monitor> monitorList = commonDao.getObjects(hql1, new Object[] { userCode, equipmentCode });

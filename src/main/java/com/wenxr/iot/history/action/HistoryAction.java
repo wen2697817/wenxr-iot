@@ -79,7 +79,7 @@ public class HistoryAction extends BaseAction {
 		String equipmentCode = request.getParameter("equipmentCode");
 		List<History> list = historyService.getHistoryListByEquipmentCode(equipmentCode,userCode);
 		try {
-			File file = new File("d:\\upload\\excel\\history.xlsx");
+			File file = new File("c:\\history.xlsx");
 			InputStream in = new FileInputStream(file);
 			Workbook wb = new XSSFWorkbook(in);
 			this.data = new Object[] { historyService.exportExcel(list, wb,

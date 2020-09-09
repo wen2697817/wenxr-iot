@@ -27,7 +27,7 @@ public class RunServiceImpl extends BaseService implements IRunService {
 		if (!Tools.isEmpty(programName)) {
 			hql = hql + " and r.programName like '%" + programName + "%'";
 		}
-		hql = hql + " order by r.userCode asc,r.equipmentCode asc";
+		hql = hql + " order by r.userCode asc,r.equipmentCode asc,r.shelfId asc";
 		return commonDao.getObjectsByPage(hql, pageVo);
 	}
 

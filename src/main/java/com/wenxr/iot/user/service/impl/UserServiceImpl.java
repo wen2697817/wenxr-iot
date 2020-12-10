@@ -90,4 +90,15 @@ public class UserServiceImpl extends BaseService implements IUserService {
 		return commonDao.getObjects(hql);
 	}
 
+	public Object getAllUserNoPageForCode(String roleId,String userId) {
+		String hql;
+		if(roleId.equals("1")) {
+			hql = "select u.userName,u.name from User u order by u.name asc";
+		}else {
+			hql = "select u.userName,u.name from User u where u.userId='"+userId+"' order by u.name asc";
+		}
+		
+		return commonDao.getObjects(hql);
+	}
+
 }

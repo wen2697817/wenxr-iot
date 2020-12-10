@@ -13,7 +13,7 @@ public interface IHistoryService {
 	 * @param pageVo
 	 * @return
 	 */
-	List<Object> getAllHistory(String userCode, String equipmentCode,String start,String end, PageValueObject pageVo);
+	List<Object> getAllHistory(String userCode,String userCode1, String equipmentCode,String start,String end, PageValueObject pageVo);
 	/**
 	  * app查询运行
 	  * @param userCode

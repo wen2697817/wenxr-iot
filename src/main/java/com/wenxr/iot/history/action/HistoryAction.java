@@ -37,13 +37,14 @@ public class HistoryAction extends BaseAction {
 			return failure("登录超时，请重新登录！");
 		}
 		String userCode = request.getParameter("userCode");
+		String userCode1 = request.getParameter("userCode1");
 		String equipmentCode = request.getParameter("equipmentCode");
 		String start = request.getParameter("createTimeStart");
 		String end = request.getParameter("createTimeEnd");
 		if(!user.getRole().getRoleId().equals("1")) {//非管理员
 			userCode = user.getUserName();
 		}
-		this.data = new Object[] {historyService.getAllHistory(userCode,equipmentCode,start,end,pageVo), pageVo,historyService.getFengPianAndRanSe(userCode,equipmentCode,start,end)};
+		this.data = new Object[] {historyService.getAllHistory(userCode,userCode1,equipmentCode,start,end,pageVo), pageVo,historyService.getFengPianAndRanSe(userCode,equipmentCode,start,end)};
 		return this.success();
 	}
 	/**

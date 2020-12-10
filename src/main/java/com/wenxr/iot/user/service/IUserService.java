@@ -66,4 +66,6 @@ public interface IUserService {
 	 * @return
 	 */
 	public List<Object> getAllUserNoPage();
+
+	public Object getAllUserNoPageForCode(String roleId, String userId);
 }

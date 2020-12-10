@@ -68,6 +68,10 @@
 				<label>总染色数：</label> <input
 				class="form-control" type="text"
 				style="border-radius: 0px; width: 100px;" id="ranse"  readonly="readonly">
+				<label>所属用户：</label> <select id="userCode1" name="userCode1"
+										style="width: 180px; height: 32px; line-height: 32px; margin-bottom: 25px;">
+										<option value="">请选择</option>
+									</select>
 			</div>
 				<table class="mt10 ml20">
 					<thead>

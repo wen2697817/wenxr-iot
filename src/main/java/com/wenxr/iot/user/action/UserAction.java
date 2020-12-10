@@ -67,7 +67,19 @@ public class UserAction extends BaseAction {
 		this.data = userService.getAllUserNoPage();;
 		return success();
 	}
-
+	/**
+	 * 获取所有的用户
+	 * 
+	 * @return
+	 */
+	public String loadAllUserNoPageForCode() {
+		User user = Globals.getLoginInfoBean(request.getSession());
+		if (user == null) {
+			return failure("登录超时，请重新登录！");
+		}
+		this.data = userService.getAllUserNoPageForCode(user.getRole().getRoleId(),user.getUserId());;
+		return success();
+	}
 	/**
 	 * 加载所有的角色
 	 * 

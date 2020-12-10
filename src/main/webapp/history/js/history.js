@@ -15,6 +15,15 @@ $(function() {
 		minView : 2,
 		forceParse : 0
 	});
+	$.post(basePath + "user-User-loadAllUserNoPageForCode.action", {}, function(data) {
+		category = data.data;
+		$.each(category,
+				function() {
+					$("#userCode1").append(
+							"<option value='" + this[0] + "'>" + this[1]
+									+ "</option>");
+				});
+	});
 	$("#frmMain input[name='formType']").val(null);
 	$("#frmMain input[name='formStatus']").val(null);
 	$("#frmMain input[name='pageVo.start']").val("0");

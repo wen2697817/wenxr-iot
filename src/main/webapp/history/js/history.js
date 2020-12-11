@@ -24,6 +24,9 @@ $(function() {
 									+ "</option>");
 				});
 	});
+	$("#userCode1").change(function(){
+		$("#userCode").val($("#userCode1").val());
+	});
 	$("#frmMain input[name='formType']").val(null);
 	$("#frmMain input[name='formStatus']").val(null);
 	$("#frmMain input[name='pageVo.start']").val("0");

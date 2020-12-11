@@ -44,7 +44,7 @@ public class HistoryAction extends BaseAction {
 		if(!user.getRole().getRoleId().equals("1")) {//非管理员
 			userCode = user.getUserName();
 		}
-		this.data = new Object[] {historyService.getAllHistory(userCode,userCode1,equipmentCode,start,end,pageVo), pageVo,historyService.getFengPianAndRanSe(userCode,equipmentCode,start,end)};
+		this.data = new Object[] {historyService.getAllHistory(userCode,userCode1,equipmentCode,start,end,pageVo), pageVo,historyService.getFengPianAndRanSe(userCode1,equipmentCode,start,end)};
 		return this.success();
 	}
 	/**

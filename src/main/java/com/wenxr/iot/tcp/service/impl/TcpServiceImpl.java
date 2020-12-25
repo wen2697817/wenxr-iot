@@ -44,7 +44,7 @@ public class TcpServiceImpl extends BaseService implements ITcpService {
 					String hql = "from Monitor m where m.userCode=? and m.equipmentCode=?";
 					List<Monitor> monitorList = commonDao.getObjects(hql, new Object[] { userCode, equipmentCode });
 					Monitor monitor;
-					if (monitorList != null && monitorList.size() == 1) {// 存在记录
+					if (monitorList != null && monitorList.size() >= 1) {// 存在记录
 						monitor = monitorList.get(0);
 					} else {// 不存在新建
 						monitor = new Monitor();

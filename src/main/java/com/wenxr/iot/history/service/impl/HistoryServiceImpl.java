@@ -16,6 +16,7 @@ import com.wenxr.iot.core.BaseService;
 import com.wenxr.iot.core.PageValueObject;
 import com.wenxr.iot.history.service.IHistoryService;
 import com.wenxr.iot.model.History;
+import com.wenxr.iot.model.User;
 import com.wenxr.iot.util.Tools;
 
 @Repository
@@ -79,7 +80,14 @@ public class HistoryServiceImpl extends BaseService implements IHistoryService {
 			row = sheet.createRow(i + 1);
 			History history = list.get(i);
 			row.createCell(0).setCellValue(i + 1);
-			row.createCell(1).setCellValue(history.getEquipmentCode());
+			String userCode = history.getUserCode();
+			String hql = "From User u where u.userName=?";
+			List<User> userList = commonDao.getObjects(hql, new Object[] {userCode});
+			String userName = "";
+			if(userList.size()==1) {
+				userName = userList.get(0).getName();
+			}
+			row.createCell(1).setCellValue(userName);
 			row.createCell(2).setCellValue(history.getCoverNumber());
 			row.createCell(3).setCellValue(history.getDyeNumber());
 			row.createCell(4).setCellValue(history.getProductionDate());

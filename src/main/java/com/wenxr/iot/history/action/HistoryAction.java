@@ -91,6 +91,14 @@ public class HistoryAction extends BaseAction {
 		}
 		return this.success();
 	}
+	public String loadAllHistoryForWeChat() {
+		String userCode = request.getParameter("userCode");
+		String equipmentCode = request.getParameter("equipmentCode");
+		String start = request.getParameter("startDate");
+		String end = request.getParameter("endDate");
+		return this.success();
+		
+	}
 	/**
 	 * 删除临时文件
 	 * @return

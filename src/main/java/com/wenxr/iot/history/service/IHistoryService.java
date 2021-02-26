@@ -45,5 +45,15 @@ public interface IHistoryService {
 	 * @return
 	 */
 	Object getFengPianAndRanSe(String userCode, String equipmentCode, String start, String end);
+	/**
+	 * 微信小程序获取合计数量
+	 * @param userCode
+	 * @param equipmentCode
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	Object getFengPianAndRanSe1(String userCode, String equipmentCode, String start, String end);
+	List<Object> getAllHistoryForWeChat(String userCode, String equipmentCode, String start, String end);
 
 }

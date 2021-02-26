@@ -96,6 +96,7 @@ public class HistoryAction extends BaseAction {
 		String equipmentCode = request.getParameter("equipmentCode");
 		String start = request.getParameter("startDate");
 		String end = request.getParameter("endDate");
+		this.data = new Object[] {historyService.getAllHistoryForWeChat(userCode,equipmentCode,start,end),historyService.getFengPianAndRanSe1(userCode,equipmentCode,start,end)};
 		return this.success();
 		
 	}

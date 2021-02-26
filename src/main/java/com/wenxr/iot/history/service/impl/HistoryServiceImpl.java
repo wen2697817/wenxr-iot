@@ -22,7 +22,8 @@ import com.wenxr.iot.util.Tools;
 @Repository
 public class HistoryServiceImpl extends BaseService implements IHistoryService {
 
-	public List<Object> getAllHistory(String userCode,String userCode1, String equipmentCode,String start,String end, PageValueObject pageVo) {
+	public List<Object> getAllHistory(String userCode, String userCode1, String equipmentCode, String start, String end,
+			PageValueObject pageVo) {
 		String hql = "select h.userCode,h.equipmentCode,h.coverNumber,h.dyeNumber,h.productionDate from History h where 1=1";
 		if (!Tools.isEmpty(userCode)) {
 			hql = hql + " and h.userCode like '%" + userCode + "%'";
@@ -55,12 +56,31 @@ public class HistoryServiceImpl extends BaseService implements IHistoryService {
 		return commonDao.getObjectsByPage(hql, pageVo);
 	}
 
-	public List<History> getHistoryListByEquipmentCode(String equipmentCode,String userCode) {
+	public List<Object> getAllHistoryForWeChat(String userCode, String equipmentCode, String start, String end) {
+		String hql = "select h.coverNumber,h.dyeNumber,h.productionDate from History h where 1=1";
+		if (!Tools.isEmpty(userCode)) {
+			hql = hql + " and h.userCode=?";
+		}
+		if (!Tools.isEmpty(equipmentCode)) {
+			hql = hql + " and h.equipmentCode=?";
+		}
+		if (!Tools.isEmpty(start)) {
+			hql = hql + " and h.productionDate >= '" + start + "%'";
+		}
+		if (!Tools.isEmpty(end)) {
+			hql = hql + " and h.productionDate <= '" + end + "%'";
+		}
+		hql = hql + " order by h.productionDate desc";
+		List<Object> l = commonDao.getObjects(hql, new Object[] { userCode, equipmentCode });
+		return l;
+	}
+
+	public List<History> getHistoryListByEquipmentCode(String equipmentCode, String userCode) {
 		String hql = "FROM History h where 1=1 ";
-		if(!Tools.isEmpty(equipmentCode)) {
+		if (!Tools.isEmpty(equipmentCode)) {
 			hql = hql + " and h.equipmentCode like '%" + equipmentCode + "%'";
 		}
-		if(!Tools.isEmpty(userCode)) {
+		if (!Tools.isEmpty(userCode)) {
 			hql = hql + " and h.userCode = '" + userCode + "'";
 		}
 		hql = hql + " order by h.productionDate desc";
@@ -82,9 +102,9 @@ public class HistoryServiceImpl extends BaseService implements IHistoryService {
 			row.createCell(0).setCellValue(i + 1);
 			String userCode = history.getUserCode();
 			String hql = "From User u where u.userName=?";
-			List<User> userList = commonDao.getObjects(hql, new Object[] {userCode});
+			List<User> userList = commonDao.getObjects(hql, new Object[] { userCode });
 			String userName = "";
-			if(userList.size()==1) {
+			if (userList.size() == 1) {
 				userName = userList.get(0).getName();
 			}
 			row.createCell(1).setCellValue(userName);
@@ -127,6 +147,24 @@ public class HistoryServiceImpl extends BaseService implements IHistoryService {
 			hql = hql + " and h.productionDate <= '" + end + "%'";
 		}
 		List<Object> l = commonDao.getObjects(hql);
+		return l;
+	}
+
+	public Object getFengPianAndRanSe1(String userCode, String equipmentCode, String start, String end) {
+		String hql = "select sum(h.coverNumber),sum(h.dyeNumber) from History h where 1=1 ";
+		if (!Tools.isEmpty(userCode)) {
+			hql = hql + " and h.userCode=?";
+		}
+		if (!Tools.isEmpty(equipmentCode)) {
+			hql = hql + " and h.equipmentCode=?";
+		}
+		if (!Tools.isEmpty(start)) {
+			hql = hql + " and h.productionDate >= '" + start + "%'";
+		}
+		if (!Tools.isEmpty(end)) {
+			hql = hql + " and h.productionDate <= '" + end + "%'";
+		}
+		List<Object> l = commonDao.getObjects(hql, new Object[] { userCode, equipmentCode });
 		return l;
 	}
 

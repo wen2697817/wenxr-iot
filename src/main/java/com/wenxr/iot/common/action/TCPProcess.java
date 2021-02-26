@@ -22,11 +22,14 @@ public class TCPProcess implements Runnable{
 			// 由于需要进行循环监听，因此获取消息的操作应放在一个while大循环中
 			while (true) {
 				try {
+					if(serverSocket==null) {
+						return;
+					}
 					// 建立跟客户端的连接
 					socket = serverSocket.accept();
 				} catch (Exception e) {
 					System.out.println("建立与客户端的连接出现异常");
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 				ServerThread thread = new ServerThread(socket);
 				thread.setDaemon(true);
@@ -37,7 +40,9 @@ public class TCPProcess implements Runnable{
 			e.printStackTrace();
 		} finally {
 			try {
-				serverSocket.close();
+				if(serverSocket!=null) {
+					serverSocket.close();
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

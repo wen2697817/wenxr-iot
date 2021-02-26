@@ -51,7 +51,7 @@ public class ServerThread extends Thread {
 			socket.close();
 		} catch (IOException e) {
 			System.out.println("关闭连接出现异常");
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 }

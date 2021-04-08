@@ -165,6 +165,7 @@ public class TcpServiceImpl extends BaseService implements ITcpService {
 					String mm[] = message.split("\\}\\{");
 					String delsql = "delete from run where user_code=? and equipment_code=?";
 					commonDao.executeJDBCSql(delsql, new Object[] {userCode,equipmentCode});
+					commonDao.flush();
 					for (String ml : mm) {
 						String ms[] = ml.split(",");
 						if (ms.length == 9) {

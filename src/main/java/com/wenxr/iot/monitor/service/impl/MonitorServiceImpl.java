@@ -3,14 +3,13 @@ package com.wenxr.iot.monitor.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.springframework.stereotype.Repository;
 
-import com.google.gson.JsonObject;
 import com.wenxr.iot.core.BaseService;
 import com.wenxr.iot.core.PageValueObject;
 import com.wenxr.iot.model.Monitor;
 import com.wenxr.iot.model.MonitorTcp;
+import com.wenxr.iot.model.Run;
 import com.wenxr.iot.monitor.service.IMonitorService;
 import com.wenxr.iot.util.Tools;
 
@@ -40,10 +39,16 @@ public class MonitorServiceImpl extends BaseService implements IMonitorService {
 		if(monitorList==null||monitorList.size()==0) {
 			return null;
 		}
-		Monitor m = monitorList.get(0);
+		Monitor mm = monitorList.get(0);
 		int e6 = equipmentCode.indexOf("MidE6");
 		int e7 = equipmentCode.indexOf("MidE7");
 		int cw = equipmentCode.indexOf("MidCW");
+		hql = "from Run r where r.userCode=? and r.equipmentCode=?";
+		List<Run> runList = commonDao.getObjects(hql, new Object[] {userCode,equipmentCode});
+		if(runList==null||runList.size()==0) {
+			return null;
+		}
+		Monitor m = getMonitorForRun(mm,runList);
 		List<MonitorTcp> mtList;
 		MonitorTcp mt;
 		if(e6>=0) {//显示24个
@@ -542,6 +547,112 @@ public class MonitorServiceImpl extends BaseService implements IMonitorService {
 			monitorListList.add(mtList);
 		}
 		return monitorListList;
+	}
+	/*
+	 * 根据运行记录显示监控数据
+	 */
+	private Monitor getMonitorForRun(Monitor mm, List<Run> runList) {
+		mm.setGn1("");
+		mm.setGn2("");
+		mm.setGn3("");
+		mm.setGn4("");
+		mm.setGn5("");
+		mm.setGn6("");
+		mm.setGn7("");
+		mm.setGn8("");
+		mm.setGn9("");
+		mm.setGn10("");
+		mm.setGn11("");
+		mm.setGn12("");
+		mm.setGn13("");
+		mm.setGn14("");
+		mm.setGn15("");
+		mm.setGn16("");
+		mm.setGn17("");
+		mm.setGn18("");
+		mm.setGn19("");
+		mm.setGn20("");
+		mm.setGn21("");
+		mm.setGn22("");
+		mm.setGn23("");
+		mm.setGn24("");
+		mm.setGn25("");
+		mm.setGn26("");
+		mm.setGn27("");
+		mm.setGn28("");
+		mm.setGn29("");
+		mm.setGn30("");
+		mm.setGn31("");
+		mm.setGn32("");
+		for(Run r:runList) {
+			String siteLocation = r.getSiteLocation();
+			if(siteLocation.equals("01"))
+				mm.setGn1(r.getProgramName());
+			else if(siteLocation.equals("02"))
+				mm.setGn2(r.getProgramName());
+			else if(siteLocation.equals("03"))
+				mm.setGn3(r.getProgramName());
+			else if(siteLocation.equals("04"))
+				mm.setGn4(r.getProgramName());
+			else if(siteLocation.equals("05"))
+				mm.setGn5(r.getProgramName());
+			else if(siteLocation.equals("06"))
+				mm.setGn6(r.getProgramName());
+			else if(siteLocation.equals("07"))
+				mm.setGn7(r.getProgramName());
+			else if(siteLocation.equals("08"))
+				mm.setGn8(r.getProgramName());
+			else if(siteLocation.equals("09"))
+				mm.setGn9(r.getProgramName());
+			else if(siteLocation.equals("10"))
+				mm.setGn10(r.getProgramName());
+			else if(siteLocation.equals("11"))
+				mm.setGn11(r.getProgramName());
+			else if(siteLocation.equals("12"))
+				mm.setGn12(r.getProgramName());
+			else if(siteLocation.equals("13"))
+				mm.setGn13(r.getProgramName());
+			else if(siteLocation.equals("14"))
+				mm.setGn14(r.getProgramName());
+			else if(siteLocation.equals("15"))
+				mm.setGn15(r.getProgramName());
+			else if(siteLocation.equals("16"))
+				mm.setGn16(r.getProgramName());
+			else if(siteLocation.equals("17"))
+				mm.setGn17(r.getProgramName());
+			else if(siteLocation.equals("18"))
+				mm.setGn18(r.getProgramName());
+			else if(siteLocation.equals("19"))
+				mm.setGn19(r.getProgramName());
+			else if(siteLocation.equals("20"))
+				mm.setGn20(r.getProgramName());
+			else if(siteLocation.equals("21"))
+				mm.setGn21(r.getProgramName());
+			else if(siteLocation.equals("22"))
+				mm.setGn22(r.getProgramName());
+			else if(siteLocation.equals("23"))
+				mm.setGn23(r.getProgramName());
+			else if(siteLocation.equals("24"))
+				mm.setGn24(r.getProgramName());
+			else if(siteLocation.equals("25"))
+				mm.setGn25(r.getProgramName());
+			else if(siteLocation.equals("26"))
+				mm.setGn26(r.getProgramName());
+			else if(siteLocation.equals("27"))
+				mm.setGn27(r.getProgramName());
+			else if(siteLocation.equals("28"))
+				mm.setGn28(r.getProgramName());
+			else if(siteLocation.equals("29"))
+				mm.setGn29(r.getProgramName());
+			else if(siteLocation.equals("30"))
+				mm.setGn30(r.getProgramName());
+			else if(siteLocation.equals("31"))
+				mm.setGn31(r.getProgramName());
+			else if(siteLocation.equals("32"))
+				mm.setGn32(r.getProgramName());
+			
+		}
+		return mm;
 	}
 
 	public String getCoverNumber(String userCode, String equipmentCode) {

@@ -292,6 +292,7 @@ public class TcpServiceImpl extends BaseService implements ITcpService {
 					if (m.length == 6) {
 						log.setLogType("历史");
 						String productionDate = m[5];
+						productionDate="20"+productionDate;
 						String hql = "from History h where h.userCode=? and h.equipmentCode=? and h.productionDate=?";
 						List<History> historyList = commonDao.getObjects(hql,
 								new Object[] { userCode, equipmentCode, productionDate });

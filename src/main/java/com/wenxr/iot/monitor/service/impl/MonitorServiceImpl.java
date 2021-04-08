@@ -45,10 +45,44 @@ public class MonitorServiceImpl extends BaseService implements IMonitorService {
 		int cw = equipmentCode.indexOf("MidCW");
 		hql = "from Run r where r.userCode=? and r.equipmentCode=?";
 		List<Run> runList = commonDao.getObjects(hql, new Object[] {userCode,equipmentCode});
+		Monitor m = new Monitor();
 		if(runList==null||runList.size()==0) {
-			return null;
+			m = mm;
+			m.setGn1("");
+			m.setGn2("");
+			m.setGn3("");
+			m.setGn4("");
+			m.setGn5("");
+			m.setGn6("");
+			m.setGn7("");
+			m.setGn8("");
+			m.setGn9("");
+			m.setGn10("");
+			m.setGn11("");
+			m.setGn12("");
+			m.setGn13("");
+			m.setGn14("");
+			m.setGn15("");
+			m.setGn16("");
+			m.setGn17("");
+			m.setGn18("");
+			m.setGn19("");
+			m.setGn20("");
+			m.setGn21("");
+			m.setGn22("");
+			m.setGn23("");
+			m.setGn24("");
+			m.setGn25("");
+			m.setGn26("");
+			m.setGn27("");
+			m.setGn28("");
+			m.setGn29("");
+			m.setGn30("");
+			m.setGn31("");
+			m.setGn32("");
+		}else {
+			m = getMonitorForRun(mm,runList);
 		}
-		Monitor m = getMonitorForRun(mm,runList);
 		List<MonitorTcp> mtList;
 		MonitorTcp mt;
 		if(e6>=0) {//显示24个
